@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>ESL Courses in Dayton, Ohio</title>
 	<link href="assets/css/style.css" rel="stylesheet">
+	<script type="text/javascript" src="assets/data/mapdata.js"></script>
 	<script type="text/javascript">
 	  function initialize() {
 	    var mapOptions = {
@@ -12,12 +13,14 @@
 	    };
 	    var map = new google.maps.Map(document.getElementById("map-canvas"),
 	      mapOptions);
-
-	    var marker = new google.maps.Marker({
-	      position: new google.maps.LatLng(39.758948,-84.191607),
-	      map: map,
-	      title: "Dayton, OH"
-	    });
+	    var mapData = JSON.parse(MAP_DATA);
+	    for (var i = 0; i < mapData.features.length; i++) {
+	      var marker = new google.maps.Marker({
+	        position: new google.maps.LatLng(mapData.features[i].geometry.coordinates[1], mapData.features[i].geometry.coordinates[0]),
+	        map: map,
+	        title: mapData.features[i].properties.name
+	      });
+	    }
 	  }
 
 	  function loadScript() {
