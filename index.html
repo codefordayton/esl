@@ -5,37 +5,30 @@
 	<title>ESL Courses in Dayton, Ohio</title>
 	<link href="assets/css/style.css" rel="stylesheet">
 	<script type="text/javascript" src="assets/data/mapdata.js"></script>
+	<script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
+	<script id="class-template" type="text/x-handlebars-template">
+	  <li id='{{properties.id}}' class="class-entry">
+	    <h1>{{properties.name}}</h1>
+	    <p>{{properties.address}}</p>
+	    <p>{{properties.address2}}</p>
+	    <p>{{properties.city}}, {{properties.state}}  {{properties.zip}}</p>
+	    <p>{{properties.time}}</p>
+	    <p>{{properties.contact}}</p>
+	    <p>{{properties.email}}</p>
+	    <p>{{properties.phone}}</p>
+	    <p>Open Enrollment: {{properties.open_enrollment}}</p>
+	  </li>
+	</script>
 	<script type="text/javascript">
-	  function initialize() {
-	    var mapOptions = {
-	      center: new google.maps.LatLng(39.758948,-84.191607),
-	      zoom: 12
-	    };
-	    var map = new google.maps.Map(document.getElementById("map-canvas"),
-	      mapOptions);
-	    var mapData = JSON.parse(MAP_DATA);
-	    for (var i = 0; i < mapData.features.length; i++) {
-	      var marker = new google.maps.Marker({
-	        position: new google.maps.LatLng(mapData.features[i].geometry.coordinates[1], mapData.features[i].geometry.coordinates[0]),
-	        map: map,
-	        title: mapData.features[i].properties.name
-	      });
-	    }
-	  }
-
-	  function loadScript() {
-	    var script = document.createElement('script');
-  	    script.type = 'text/javascript';
-  	    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-	      'callback=initialize';
-  	    document.body.appendChild(script);
-	  }
-
 	  window.onload = loadScript;
 	</script>
 </head>
 <body>
-	<div id="map-canvas"/>
-	<div id="list-contents"/>
+	<div id="map-canvas"></div>
+	<div id="list-container">
+		<ul id="class-list">
+		</ul>
+	</div>
 </body>
 </html>
