@@ -174,37 +174,40 @@ function checkDateTime(feature, filterState) {
   if (feature.properties.time.length === 0)
     return true;
 
-  // if the filters are defined, but disabled, quick return
+  var dayState = false;
+  var timeState = false;
+  
+  // if the filters are defined, but disabled, alter the flag for that set 
   if ((filterState.datetime.m === false || filterState.datetime.m === undefined) &&
       (filterState.datetime.t === false || filterState.datetime.t === undefined) &&
       (filterState.datetime.w === false || filterState.datetime.w === undefined) &&
       (filterState.datetime.th === false || filterState.datetime.th === undefined) &&
-      (filterState.datetime.f === false || filterState.datetime.f === undefined) &&
-      (filterState.datetime.am === false || filterState.datetime.am === undefined) &&
+      (filterState.datetime.f === false || filterState.datetime.f === undefined))
+    dayState = true;
+  if ((filterState.datetime.am === false || filterState.datetime.am === undefined) &&
       (filterState.datetime.pm === false || filterState.datetime.pm === undefined))
-    return true;
+    timeState = true;
 
-  var returnState = false;
-  
   // parse the time string
   parseDateTime(feature);
 
   if (filterState.datetime.m === true && feature.properties.dateinfo.m === true)
-    returnState = true;
+    dayState = true;
   if (filterState.datetime.t === true && feature.properties.dateinfo.t === true)
-    returnState = true;
+    dayState = true;
   if (filterState.datetime.w === true && feature.properties.dateinfo.w === true)
-    returnState = true;
+    dayState = true;
   if (filterState.datetime.th === true && feature.properties.dateinfo.th === true)
-    returnState = true;
+    dayState = true;
   if (filterState.datetime.f === true && feature.properties.dateinfo.f === true)
-    returnState = true;
-  if (filterState.datetime.am === true && feature.properties.dateinfo.am === true)
-    returnState = true;
-  if (filterState.datetime.pm === true && feature.properties.dateinfo.pm === true)
-    returnState = true;
+    dayState = true;
 
-  return returnState;
+  if (filterState.datetime.am === true && feature.properties.dateinfo.am === true)
+    timeState = true;
+  if (filterState.datetime.pm === true && feature.properties.dateinfo.pm === true)
+    timeState = true;
+
+  return dayState && timeState;
 }
 
 // checkSkillLevel checks to see if any of the skill level flags are set
