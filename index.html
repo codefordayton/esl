@@ -18,6 +18,8 @@
 	    <p>{{properties.email}}</p>
 	    <p>{{properties.phone}}</p>
 	    <p>Open Enrollment: {{properties.open_enrollment}}</p>
+	    <p>Childcare Available: {{properties.childcare}}</p>
+	    <p>Skill Level: {{properties.skill_level}}</p>
 	  </li>
 	</script>
 	<script type="text/javascript">
@@ -29,6 +31,22 @@
 	<div id="list-container">
 		<ul id="class-list">
 		</ul>
+	</div>
+	<div id="filter-container">
+		<div id="walkin-filter">
+			<input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?<br />
+			<input id="chk-monday" type="checkbox" value="monday">Monday<br />
+			<input id="chk-tuesday" type="checkbox" value="tueday">Tuesday<br />
+			<input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday<br />
+			<input id="chk-thursday" type="checkbox" value="thursday">Thursday<br />
+			<input id="chk-friday" type="checkbox" value="friday">Friday<br />
+			<input id="chk-morning" type="checkbox" value="morning">Morning<br />
+			<input id="chk-evening" type="checkbox" value="evening">Evening<br />
+			<input id="chk-childcare" type="checkbox" value="childcare">Childcare Available<br />
+			<input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic<br />
+			<input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate<br />
+			<input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced<br />
+		</div>
 	</div>
 </body>
 </html>

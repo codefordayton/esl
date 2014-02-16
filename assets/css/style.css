@@ -3,7 +3,7 @@ body, html {
 }
 
 #map-canvas {
-	height: 100%;
+	height: 60%;
 	width: 50%;
 	float: left;
 }
