@@ -59,12 +59,6 @@ function initialize() {
 
     userLocation.setMap(null);
     setUserLocation(place.geometry.location);
-
-    markers.push(marker);
-
-    bounds.extend(place.geometry.location);
-
-    map.fitBounds(bounds);
   });
             
   // load the map data
