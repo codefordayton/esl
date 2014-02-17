@@ -1,6 +1,25 @@
-// global mapData (should be namespaced?)
+// global vars (should be namespaced?)
+var map;
 var mapData;
+var userLocation;
 var filterState = [];
+
+// sets user location
+function setUserLocation(pos) {
+  var myIcon = new google.maps.MarkerImage(
+    'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+    null,
+    null,
+    null,
+    new google.maps.Size(50, 50)
+  );
+  userLocation = new google.maps.Marker({
+    position: pos,
+    icon: myIcon,
+    map: map,
+    title: 'My Location'
+  });
+}
 
 // called after the map is added, adds our data into the map and list 
 function initialize() {
@@ -11,11 +30,42 @@ function initialize() {
   };
   
   // create the map element
-  var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
   
   // load the handlebars template for the class list
   var source = document.getElementById('class-template').innerHTML;
   var template = Handlebars.compile(source);
+  
+  // If browser supports geolocation, use it to put user location on map
+  if (navigator.geolocation) {
+    function success(position) {
+      setUserLocation(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    }
+    navigator.geolocation.getCurrentPosition(success, null);
+  }
+  
+  // Create the search box and link it to the UI element.
+  var input = /** @type {HTMLInputElement} */(
+      document.getElementById('pac-input'));
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  var searchBox = new google.maps.places.SearchBox(
+    /** @type {HTMLInputElement} */(input));
+
+  // Listen for the event fired when the user selects an item from the
+  // pick list. Retrieve the matching places for that item.
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+    var place = searchBox.getPlaces()[0];
+
+    userLocation.setMap(null);
+    setUserLocation(place.geometry.location);
+
+    markers.push(marker);
+
+    bounds.extend(place.geometry.location);
+
+    map.fitBounds(bounds);
+  });
             
   // load the map data
   mapData = JSON.parse(MAP_DATA);
@@ -337,6 +387,6 @@ function findPos(obj) {
 function loadScript() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize';
+  script.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&v=3.exp&sensor=false&callback=initialize';
   document.body.appendChild(script);
 }
