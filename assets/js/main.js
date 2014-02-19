@@ -184,6 +184,12 @@ function applyFilters(mapData, filterState) {
 
     mapData.features[i].properties.shown = state;
     mapData.features[i].properties.marker.setVisible(state);
+    if (!state) {
+      document.getElementById(mapData.features[i].properties.id).style.display = 'none';
+    }
+    else {
+      document.getElementById(mapData.features[i].properties.id).style.display = 'block';
+    }
   }
 }
 
