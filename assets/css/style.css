@@ -19,3 +19,7 @@ body, html {
 .class-entry {
 	list-style-type: none;
 }
+
+.hidden {
+	display: none;
+}
