@@ -304,19 +304,19 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "St. Paul United Methodist Church",
+        "name": "St. Paul's United Methodist Church",
         "address": "101 Huffman Ave.",
         "address2": "",
         "city": "Dayton",
         "state": "OH",
         "zip": 45403,
-        "time": "",
-        "contact": "Tawnya Lambert",
+        "time": "M 6:00pm-8:00pm, TR 10:00-12:00pm",
+        "contact": "Rebekah Clapp or Tawnya Lambert",
         "email": "office@stpauldayton.org",
         "phone": "937-252-4467",
-        "open_enrollment": "no",
-        "childcare": "unknown",
-        "skill_level": "unknown"
+        "open_enrollment": "yes",
+        "childcare": "yes",
+        "skill_level": "Beginner and Intermediate"
       },
       "geometry": {
         "type": "Point",
