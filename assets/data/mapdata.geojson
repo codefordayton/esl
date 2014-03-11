@@ -425,6 +425,31 @@
           39.692559
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kettering ABLE Programs at St. Mary's Center",
+        "address": "427 Steele Ave.",
+        "address2": "",
+        "city": "Dayton",
+        "state": "OH",
+        "zip": 45410,
+        "time": "T/TH 9:00-12:00pm, W 9:00-11:30",
+        "contact": "Katie Miller, coordinator T.J. Armstrong, asst. coordinator",
+        "email": "katie.miller@ketteringschools.org",
+        "phone": "937-426-9965",
+        "open_enrollment": "no",
+        "childcare": "no",
+        "skill_level": "Beginner and Intermediate"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.16768900000001,
+          39.753784
+        ]
+      }
     }
   ]
 }
