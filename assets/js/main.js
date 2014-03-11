@@ -62,74 +62,82 @@ function initialize() {
   });
             
   // load the map data
-  mapData = JSON.parse(MAP_DATA);
-  // put data into the map, store references to the markers and visibility in the JSON.
-  for (var i = 0; i < mapData.features.length; i++) {
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(mapData.features[i].geometry.coordinates[1], 
-                                       mapData.features[i].geometry.coordinates[0]),
-      map: map,
-      title: mapData.features[i].properties.name
-    });
-    // store helpful properties
-    mapData.features[i].properties.marker = marker;
-    mapData.features[i].properties.shown = true;
-    mapData.features[i].properties.id = 'class' + i;
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', location.href + 'assets/data/mapdata.geojson');
+  xhr.onload = function() {
+    mapData = JSON.parse(this.responseText);
 
-    google.maps.event.addListener(marker, 'click', function(e) {
-      selectClass(mapData, e);
-    });
+    // put data into the map, store references to the markers and visibility in the JSON.
+    for (var i = 0; i < mapData.features.length; i++) {
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(mapData.features[i].geometry.coordinates[1], 
+                                         mapData.features[i].geometry.coordinates[0]),
+        map: map,
+        title: mapData.features[i].properties.name
+      });
+      // store helpful properties
+      mapData.features[i].properties.marker = marker;
+      mapData.features[i].properties.shown = true;
+      mapData.features[i].properties.id = 'class' + i;
 
-    // TODO: Possible to simplify?
-    google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
-      toggleWalkin(mapData, e);
-    });
+      google.maps.event.addListener(marker, 'click', function(e) {
+        selectClass(mapData, e);
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-monday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'm');
-    });
+      // TODO: Possible to simplify?
+      google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
+        toggleWalkin(mapData, e);
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-tuesday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 't');
-    });
+      google.maps.event.addDomListener(document.getElementById('chk-monday'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'm');
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-wednesday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'w');
-    });
+      google.maps.event.addDomListener(document.getElementById('chk-tuesday'), 'click', function(e) {
+        toggleDateChange(mapData, e, 't');
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-thursday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'th');
-    });
+      google.maps.event.addDomListener(document.getElementById('chk-wednesday'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'w');
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-friday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'f');
-    });
+      google.maps.event.addDomListener(document.getElementById('chk-thursday'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'th');
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-morning'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'am');
-    });
+      google.maps.event.addDomListener(document.getElementById('chk-friday'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'f');
+      });
 
-    google.maps.event.addDomListener(document.getElementById('chk-evening'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'pm');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-childcare'), 'click', function(e) {
-      toggleChildcare(mapData, e);
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level1'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '1');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level2'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '2');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '3');
-    });
-    document.getElementById('list-container').innerHTML += template(mapData.features[i]);
-  }
+      google.maps.event.addDomListener(document.getElementById('chk-morning'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'am');
+      });
+
+      google.maps.event.addDomListener(document.getElementById('chk-evening'), 'click', function(e) {
+        toggleDateChange(mapData, e, 'pm');
+      });
+        
+      google.maps.event.addDomListener(document.getElementById('chk-childcare'), 'click', function(e) {
+        toggleChildcare(mapData, e);
+      });
+        
+      google.maps.event.addDomListener(document.getElementById('chk-level1'), 'click', function(e) {
+        toggleSkillLevel(mapData, e, '1');
+      });
+        
+      google.maps.event.addDomListener(document.getElementById('chk-level2'), 'click', function(e) {
+        toggleSkillLevel(mapData, e, '2');
+      });
+        
+      google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
+        toggleSkillLevel(mapData, e, '3');
+      });
+      document.getElementById('list-container').innerHTML += template(mapData.features[i]);
+    }
+  };
+  xhr.send();
+
+  
 }
 
 // called when a pin is clicked
