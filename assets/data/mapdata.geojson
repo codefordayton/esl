@@ -450,6 +450,31 @@
           39.753784
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Kettering ABLE Programs at D.L. Barnes Building",
+        "address": "3700 Far Hills Ave.",
+        "address2": "",
+        "city": "Kettering",
+        "state": "OH",
+        "zip": 45429,
+        "time": "M/W 12:30pm-2:30pm, T/W/TR 9:00-12:00pm, T/TR 6:00pm-8:00pm",
+        "contact": "Katie Miller, coordinator T.J. Armstrong, asst. coordinator",
+        "email": "katie.miller@ketteringschools.org",
+        "phone": "937-426-9965",
+        "open_enrollment": "no",
+        "childcare": "no",
+        "skill_level": "Beginner, Intermediate, Advanced"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.166956,
+          39.69353600000001
+        ]
+      }
     }
   ]
 }
