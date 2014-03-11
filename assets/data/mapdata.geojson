@@ -260,13 +260,13 @@
         "city": "Centerville",
         "state": "OH",
         "zip": 45459,
-        "time": "",
-        "contact": "Greg Rittenhouse",
+        "time": "W 7:00pm-9:00pm",
+        "contact": "Firmino de Almeida",
         "email": "esl@southdaytonpca.com",
         "phone": "937-433-1022",
-        "open_enrollment": "no",
-        "childcare": "unknown",
-        "skill_level": "unknown"
+        "open_enrollment": "yes",
+        "childcare": "no",
+        "skill_level": "Five levels: Foundations; Level1, 2, 3 and 4"
       },
       "geometry": {
         "type": "Point",
