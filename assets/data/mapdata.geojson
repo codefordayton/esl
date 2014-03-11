@@ -35,13 +35,13 @@
         "city": "Dayton",
         "state": "OH",
         "zip": 45420,
-        "time": "",
+        "time": "M 7:30pm-8:30pm",
         "contact": "Pastor Randy Coleman",
-        "email": "",
+        "email": "rcoleman40@gmail.com",
         "phone": "937-254-1788",
-        "open_enrollment": "no",
-        "childcare": "unknown",
-        "skill_level": "unknown"
+        "open_enrollment": "yes",
+        "childcare": "yes",
+        "skill_level": "Beginner and Intermediate"
       },
       "geometry": {
         "type": "Point",
