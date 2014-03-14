@@ -2,18 +2,23 @@ body, html {
 	height: 100%;
 }
 
+body {
+	padding-top: 60px;
+}
+
 #map-canvas {
-	height: 60%;
-	width: 50%;
-	float: left;
+	width:100%;
+	height:500px;
+	border:0;
+	margin-bottom:-5px;
 }
 
 #list-container {
-	height: 100%;
-	overflow: auto;
-	padding-bottom: 20px;
-	float: right;
-	width: 50%;
+	
+}
+
+#filter-container {
+
 }
 
 .class-entry {
