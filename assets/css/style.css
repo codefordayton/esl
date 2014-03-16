@@ -9,7 +9,7 @@ body, html {
 }
 
 #list-container {
-	height: 100%;
+	height: 90%;
 	overflow: auto;
 	padding-bottom: 20px;
 	float: right;
@@ -20,6 +20,7 @@ body, html {
 	list-style-type: none;
 }
 
-.hidden {
-	display: none;
+#feedback-container {
+	height: 10%;
+	float: right;
 }

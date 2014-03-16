@@ -32,60 +32,60 @@ function initialize() {
     mapData.features[i].properties.shown = true;
     mapData.features[i].properties.id = 'class' + i;
 
-    google.maps.event.addListener(marker, 'click', function(e) {
-      selectClass(mapData, e);
-    });
-
-    // TODO: Possible to simplify?
-    google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
-      toggleWalkin(mapData, e);
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-monday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'm');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-tuesday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 't');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-wednesday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'w');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-thursday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'th');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-friday'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'f');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-morning'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'am');
-    });
-
-    google.maps.event.addDomListener(document.getElementById('chk-evening'), 'click', function(e) {
-      toggleDateChange(mapData, e, 'pm');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-childcare'), 'click', function(e) {
-      toggleChildcare(mapData, e);
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level1'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '1');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level2'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '2');
-    });
-    
-    google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
-      toggleSkillLevel(mapData, e, '3');
-    });
     document.getElementById('list-container').innerHTML += template(mapData.features[i]);
   }
+  google.maps.event.addListener(marker, 'click', function(e) {
+    selectClass(mapData, e);
+  });
+
+  // TODO: Possible to simplify?
+  google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
+    toggleWalkin(mapData, e);
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-monday'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'm');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-tuesday'), 'click', function(e) {
+    toggleDateChange(mapData, e, 't');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-wednesday'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'w');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-thursday'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'th');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-friday'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'f');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-morning'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'am');
+  });
+
+  google.maps.event.addDomListener(document.getElementById('chk-evening'), 'click', function(e) {
+    toggleDateChange(mapData, e, 'pm');
+  });
+   
+  google.maps.event.addDomListener(document.getElementById('chk-childcare'), 'click', function(e) {
+    toggleChildcare(mapData, e);
+  });
+    
+  google.maps.event.addDomListener(document.getElementById('chk-level1'), 'click', function(e) {
+    toggleSkillLevel(mapData, e, '1');
+  });
+    
+  google.maps.event.addDomListener(document.getElementById('chk-level2'), 'click', function(e) {
+    toggleSkillLevel(mapData, e, '2');
+  });
+    
+  google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
+    toggleSkillLevel(mapData, e, '3');
+  });
 }
 
 // called when a pin is clicked
@@ -346,3 +346,4 @@ function loadScript() {
   script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=initialize';
   document.body.appendChild(script);
 }
+
