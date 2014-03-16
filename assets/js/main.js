@@ -136,8 +136,6 @@ function initialize() {
     }
   };
   xhr.send();
-
-  
 }
 
 // called when a pin is clicked
