@@ -63,7 +63,7 @@ function initialize() {
             
   // load the map data
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', location.href + 'assets/data/mapdata.geojson');
+  xhr.open('GET', 'assets/data/mapdata.geojson');
   xhr.onload = function() {
     mapData = JSON.parse(this.responseText);
 
@@ -79,10 +79,6 @@ function initialize() {
       mapData.features[i].properties.marker = marker;
       mapData.features[i].properties.shown = true;
       mapData.features[i].properties.id = 'class' + i;
-
-      google.maps.event.addListener(marker, 'click', function(e) {
-        selectClass(mapData, e);
-      });
 
       // TODO: Possible to simplify?
       google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
@@ -132,27 +128,16 @@ function initialize() {
       google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
         toggleSkillLevel(mapData, e, '3');
       });
-      document.getElementById('list-container').innerHTML += template(mapData.features[i]);
+	  
+      $('#class-list').append(template(mapData.features[i]));
     }
+  console.log($('#class-list').size());
+  console.log($('#class-list li').size());
+  $('#class-list li').responsiveEqualHeightGrid();
   };
   xhr.send();
 
   
-}
-
-// called when a pin is clicked
-function selectClass(mapData, e) {
-  // loop through the class data we have and match based on coordinates
-  // this logic is a bit buggy - Sinclair has two pins with the same coords; need to add additional
-  // comparison logic for name.
-  for (var i = 0; i < mapData.features.length; i++) {
-    // if this is our pin, scroll the side window to the correct location.
-    if (e.latLng.equals(mapData.features[i].properties.marker.getPosition())) {
-      document.getElementById('list-container').scrollTop = 
-        findPos(document.getElementById(mapData.features[i].properties.id));
-      break;
-    }
-  }
 }
 
 // toggleXXXXX functions apply the changed checkbox to the appropriate filterState variables
