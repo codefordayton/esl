@@ -134,6 +134,7 @@ function initialize() {
   console.log($('#class-list').size());
   console.log($('#class-list li').size());
   $('#class-list li').responsiveEqualHeightGrid();
+  $('#class-list li').each(function () {$(this).addClass('col-xs-12 col-sm-12 col-md-6 col-lg-6');});
   };
   xhr.send();
 
