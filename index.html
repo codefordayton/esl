@@ -7,22 +7,23 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
     <script type="text/javascript" src="assets/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.csv-0.71.min.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="assets/js/grids.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script id="class-template" type="text/x-handlebars-template">
-      <li id="{{properties.id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
-        <h1>{{properties.name}}</h1>
-        <p>{{properties.address}}</p>
-        <p>{{properties.address2}}</p>
-        <p>{{properties.city}}, {{properties.state}}  {{properties.zip}}</p>
-        <p>{{properties.time}}</p>
-        <p>{{properties.contact}}</p>
-        <p>{{properties.email}}</p>
-        <p>{{properties.phone}}</p>
-        <p>Open Enrollment: {{properties.open_enrollment}}</p>
-        <p>Childcare Available: {{properties.childcare}}</p>
-        <p>Skill Level: {{properties.skill_level}}</p>
+      <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
+        <h1>{{name}}</h1>
+        <p>{{address}}</p>
+        <p>{{address2}}</p>
+        <p>{{city}}, {{state}}  {{zip}}</p>
+        <p>{{time}}</p>
+        <p>{{contact}}</p>
+        <p>{{email}}</p>
+        <p>{{phone}}</p>
+        <p>Open Enrollment: {{open_enrollment}}</p>
+        <p>Childcare Available: {{childcare}}</p>
+        <p>Skill Level: {{skill_level}}</p>
       </li>
     </script>
     <script type="text/javascript">

@@ -63,22 +63,21 @@ function initialize() {
             
   // load the map data
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'assets/data/mapdata.geojson');
+  xhr.open('GET', 'https://docs.google.com/spreadsheet/pub?key=0ArVHHOqS9VmBdEI1Rk4tMEhxd2pNb1ByYXNQbUJjV0E&output=csv');
   xhr.onload = function() {
-    mapData = JSON.parse(this.responseText);
+    mapData = $.csv.toObjects(this.responseText);
 
     // put data into the map, store references to the markers and visibility in the JSON.
-    for (var i = 0; i < mapData.features.length; i++) {
+    for (var i = 0; i < mapData.length; i++) {
       var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(mapData.features[i].geometry.coordinates[1], 
-                                         mapData.features[i].geometry.coordinates[0]),
+        position: new google.maps.LatLng(mapData[i].latitude, mapData[i].longitude),
         map: map,
-        title: mapData.features[i].properties.name
+        title: mapData[i].name
       });
       // store helpful properties
-      mapData.features[i].properties.marker = marker;
-      mapData.features[i].properties.shown = true;
-      mapData.features[i].properties.id = 'class' + i;
+      mapData[i].marker = marker;
+      mapData[i].shown = true;
+      mapData[i].id = 'class' + i;
 
       // TODO: Possible to simplify?
       google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
@@ -129,7 +128,7 @@ function initialize() {
         toggleSkillLevel(mapData, e, '3');
       });
 	  
-      $('#class-list').append(template(mapData.features[i]));
+      $('#class-list').append(template(mapData[i]));
     }
   console.log($('#class-list').size());
   console.log($('#class-list li').size());
@@ -169,19 +168,19 @@ function toggleSkillLevel(mapData, e, field) {
 
 // loop over every map point and check to see if it satisfies the current filterState
 function applyFilters(mapData, filterState) {
-  for (var i = 0; i < mapData.features.length; i++) {
-    var state = checkWalkin(mapData.features[i], filterState) &&
-                checkChildcare(mapData.features[i], filterState) &&
-                checkDateTime(mapData.features[i], filterState) &&
-                checkSkillLevel(mapData.features[i], filterState)
+  for (var i = 0; i < mapData.length; i++) {
+    var state = checkWalkin(mapData[i], filterState) &&
+                checkChildcare(mapData[i], filterState) &&
+                checkDateTime(mapData[i], filterState) &&
+                checkSkillLevel(mapData[i], filterState)
 
-    mapData.features[i].properties.shown = state;
-    mapData.features[i].properties.marker.setVisible(state);
+    mapData[i].shown = state;
+    mapData[i].marker.setVisible(state);
     if (!state) {
-      document.getElementById(mapData.features[i].properties.id).style.display = 'none';
+      document.getElementById(mapData[i].id).style.display = 'none';
     }
     else {
-      document.getElementById(mapData.features[i].properties.id).style.display = 'block';
+      document.getElementById(mapData[i].id).style.display = 'block';
     }
   }
 }
@@ -189,14 +188,14 @@ function applyFilters(mapData, filterState) {
 // checkXXXXX functions return true/false if the map feature should be shown based on the internal selection logic
 // checkWalkin checks the state of the open_enrollment map data, and the filterState walkin flag.
 function checkWalkin(feature, filterState) {
-  if (feature.properties.open_enrollment === 'no' && filterState.walkin === true)
+  if (feature.open_enrollment === 'no' && filterState.walkin === true)
     return false;
   return true;
 }
 
 // checkChildcare checks the state of the childcare map data and filterState flag
 function checkChildcare(feature, filterState) {
-  if (feature.properties.childcare === 'no' && filterState.childcare === true)
+  if (feature.childcare === 'no' && filterState.childcare === true)
     return false;
   return true;
 }
@@ -214,7 +213,7 @@ function checkDateTime(feature, filterState) {
     return true;
 
   // if we don't have any defined times, quick return
-  if (feature.properties.time.length === 0)
+  if (feature.time.length === 0)
     return true;
 
   var dayState = false;
@@ -234,20 +233,20 @@ function checkDateTime(feature, filterState) {
   // parse the time string
   parseDateTime(feature);
 
-  if (filterState.datetime.m === true && feature.properties.dateinfo.m === true)
+  if (filterState.datetime.m === true && feature.dateinfo.m === true)
     dayState = true;
-  if (filterState.datetime.t === true && feature.properties.dateinfo.t === true)
+  if (filterState.datetime.t === true && feature.dateinfo.t === true)
     dayState = true;
-  if (filterState.datetime.w === true && feature.properties.dateinfo.w === true)
+  if (filterState.datetime.w === true && feature.dateinfo.w === true)
     dayState = true;
-  if (filterState.datetime.th === true && feature.properties.dateinfo.th === true)
+  if (filterState.datetime.th === true && feature.dateinfo.th === true)
     dayState = true;
-  if (filterState.datetime.f === true && feature.properties.dateinfo.f === true)
+  if (filterState.datetime.f === true && feature.dateinfo.f === true)
     dayState = true;
 
-  if (filterState.datetime.am === true && feature.properties.dateinfo.am === true)
+  if (filterState.datetime.am === true && feature.dateinfo.am === true)
     timeState = true;
-  if (filterState.datetime.pm === true && feature.properties.dateinfo.pm === true)
+  if (filterState.datetime.pm === true && feature.dateinfo.pm === true)
     timeState = true;
 
   return dayState && timeState;
@@ -260,7 +259,7 @@ function checkSkillLevel(feature, filterState) {
     return true;
 
   // if we don't have skill level information, quick return
-  if (feature.properties.skill_level.length === 0 || feature.properties.skill_level === 'unknown')
+  if (feature.skill_level.length === 0 || feature.skill_level === 'unknown')
     return true;
 
   // if we don't have a skill level flag set, quick return
@@ -269,7 +268,7 @@ function checkSkillLevel(feature, filterState) {
       (filterState.skilllevel['3'] === false || filterState.skilllevel['3'] === undefined))
     return true; 
 
-  var data = feature.properties.skill_level.toLowerCase();
+  var data = feature.skill_level.toLowerCase();
 
   // the fields are OR'd
   if (filterState.skilllevel['1'] === true && data.indexOf('begin') === -1)
@@ -293,41 +292,41 @@ function checkSkillLevel(feature, filterState) {
 function parseDateTime(feature) {
   var days = ['m', 't', 'w', 'th', 'f'];
 
-  if (feature.properties.dateinfo !== undefined)
+  if (feature.dateinfo !== undefined)
     return;
   
-  feature.properties.dateinfo = [];
-  feature.properties.dateinfo.m = false;
-  feature.properties.dateinfo.t = false;
-  feature.properties.dateinfo.w = false;
-  feature.properties.dateinfo.th = false;
-  feature.properties.dateinfo.f = false;
-  feature.properties.dateinfo.am = false;
-  feature.properties.dateinfo.pm = false;
+  feature.dateinfo = [];
+  feature.dateinfo.m = false;
+  feature.dateinfo.t = false;
+  feature.dateinfo.w = false;
+  feature.dateinfo.th = false;
+  feature.dateinfo.f = false;
+  feature.dateinfo.am = false;
+  feature.dateinfo.pm = false;
   
   // rudimentary parsing of day of week/time range info.
   // Will handle days (M W F)
   //             day ranges (M-F)
   //             and combinations (M-W F)
   // Assumes anything before 9:00 is evening, equal or after is morning. Does not handle explicit am/pm
-  var datetime = feature.properties.time.replace(/,/g, '').toLowerCase();
+  var datetime = feature.time.replace(/,/g, '').toLowerCase();
   var sliced = datetime.split(' ');
   for (var j = 0; j < sliced.length; j++) {
     // simple case, just the day
     if (sliced[j] === 'm') {
-      feature.properties.dateinfo.m = true;
+      feature.dateinfo.m = true;
     }
     else if (sliced[j] === 't') {
-      feature.properties.dateinfo.t = true;
+      feature.dateinfo.t = true;
     }
     else if (sliced[j] === 'w') {
-      feature.properties.dateinfo.w = true;
+      feature.dateinfo.w = true;
     }
     else if (sliced[j] === 'th') {
-      feature.properties.dateinfo.th = true;
+      feature.dateinfo.th = true;
     }
     else if (sliced[j] === 'f') {
-      feature.properties.dateinfo.f = true;
+      feature.dateinfo.f = true;
     }
     // pass the buck forward, instead of M-W, data contained M - W
     else if (sliced[j] === '-') {
@@ -340,10 +339,10 @@ function parseDateTime(feature) {
       if (isNumber(parts[0].substr(0,1))) {
         var hourMin = sliced[j].split(':');
         if (hourMin[0] >= 9) {
-          feature.properties.dateinfo.am = true;
+          feature.dateinfo.am = true;
         }
         else {
-          feature.properties.dateinfo.pm = true;
+          feature.dateinfo.pm = true;
         }   
       }
       // day range
@@ -352,7 +351,7 @@ function parseDateTime(feature) {
         var endIndex = days.indexOf(parts[1]);
                 
         for (; startIndex <= endIndex; startIndex++) {
-          feature.properties.dateinfo[days[startIndex]] = true;
+          feature.dateinfo[days[startIndex]] = true;
         }
       }
     } 
