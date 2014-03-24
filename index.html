@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width"/>
     <title>ESL Courses in Dayton, Ohio</title>
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
@@ -13,7 +14,7 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script id="class-template" type="text/x-handlebars-template">
       <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
-        <h1>{{name}}</h1>
+        <h3><strong>{{name}}</strong</h3>
         <p>{{address}}</p>
         <p>{{address2}}</p>
         <p>{{city}}, {{state}}  {{zip}}</p>
@@ -31,7 +32,9 @@
     </script>
 </head>
 <body>
-    <div id="map-canvas"></div>
+    <div id="map-canvas">
+	    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+	</div>
     <div class="container-fluid">
 	    <div class="row">
             <div role="navigation" class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -44,8 +47,8 @@
 				</ul>
 		    </div>
             <div id="filter-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                 <div id="walkin-filter row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2>Filter</h2></div>
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
@@ -61,10 +64,11 @@
                 </div>
             </div>
             <div id="list-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
+			    <h2>Classes<h2>
                 <ul id="class-list" class="row"></ul>
             </div>
 		    <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		        <h1>About</h1>
+		        <h2>About</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a ultricies orci. Nullam vitae est ac orci iaculis ornare. Pellentesque pretium posuere mauris, nec lobortis tellus. Quisque porta neque libero, molestie convallis leo tempus id. Aliquam egestas, massa vel pellentesque tempus, diam leo pretium justo, nec blandit risus elit vulputate lorem. Praesent vel odio aliquam, ultrices diam eu, faucibus metus. Sed adipiscing arcu ac nisi porta, nec adipiscing risus tempor. Sed sit amet eros odio. Curabitur a tellus eu neque tempor congue. Duis eu nisl magna. Aliquam et turpis et nibh convallis ornare quis sed augue. Aenean et ipsum fringilla, adipiscing felis elementum, pellentesque lorem. Nulla eleifend, tellus eu venenatis tincidunt, velit urna tempor urna, et commodo purus ipsum id nunc. Cras eget placerat mi, nec lacinia quam. Integer vel imperdiet urna.
 		        </p>
 		    </div>
