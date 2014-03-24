@@ -14,17 +14,17 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script id="class-template" type="text/x-handlebars-template">
       <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
-        <h3><strong>{{name}}</strong</h3>
-        <p>{{address}}</p>
-        <p>{{address2}}</p>
-        <p>{{city}}, {{state}}  {{zip}}</p>
-        <p>{{time}}</p>
-        <p>{{contact}}</p>
-        <p>{{email}}</p>
-        <p>{{phone}}</p>
-        <p>Open Enrollment: {{open_enrollment}}</p>
-        <p>Childcare Available: {{childcare}}</p>
-        <p>Skill Level: {{skill_level}}</p>
+        <h3 class="class-entry"><strong>{{name}}</strong></h3>
+        <p class="class-entry">{{address}}</p>
+        <p class="class-entry">{{address2}}</p>
+        <p class="class-entry">{{city}}, {{state}}  {{zip}}</p>
+        <p class="class-entry">{{time}}</p>
+        <p class="class-entry">{{contact}}</p>
+        <p class="class-entry">{{email}}</p>
+        <p class="class-entry">{{phone}}</p>
+        <p class="class-entry">Open Enrollment: {{open_enrollment}}</p>
+        <p class="class-entry">Childcare Available: {{childcare}}</p>
+        <p class="class-entry">Skill Level: {{skill_level}}</p>
       </li>
     </script>
     <script type="text/javascript">
@@ -32,40 +32,41 @@
     </script>
 </head>
 <body>
-    <div id="map-canvas">
-	    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <ul class="nav navbar-nav row">
+            <li class="col-xs-12 col-sm-5 col-md-5 col-lg-5"><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#map-canvas">Map</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#filter-container">Filter</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#about">About</a></li>
+            <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#list-container">Classes</a></li>
+		</ul>
 	</div>
+	<div id="map-canvas"></div>
+	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div class="container-fluid">
 	    <div class="row">
-            <div role="navigation" class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <ul class="nav navbar-nav">
-                    <li class="col-xs-12 col-sm-5 col-md-5 col-lg-5"><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></li>
-                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#map-canvas">Map</a></li>
-                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#filter-container">Filter</a></li>
-                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#about">About</a></li>
-                    <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#list-container">Classes</a></li>
-				</ul>
-		    </div>
             <div id="filter-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
                 <div id="walkin-filter row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2>Filter</h2></div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
-                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
                 </div>
             </div>
             <div id="list-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
-			    <h2>Classes<h2>
-                <ul id="class-list" class="row"></ul>
+				<div class="row">
+					<h2>Classes<h2>
+					<ul id="class-list" class="row"></ul>
+				</div>
             </div>
 		    <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		        <h2>About</h2>
