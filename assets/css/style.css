@@ -1,26 +1,25 @@
 body, html { 
 	height: 100%;
+	background-color: #088A08;
 }
 
 #map-canvas {
-	height: 60%;
-	width: 50%;
-	float: left;
-}
-
-#list-container {
 	height: 90%;
-	overflow: auto;
-	padding-bottom: 20px;
-	float: right;
-	width: 50%;
+	width: 100%;
 }
 
 .class-entry {
 	list-style-type: none;
 }
 
-#feedback-container {
-	height: 10%;
-	float: right;
+ul{
+    list-style-type: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.navbar-default{
+    background-color: #f8f800 !important;
 }

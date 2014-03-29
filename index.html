@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>ESL Courses in Dayton, Ohio</title>
-	<link href="assets/css/style.css" rel="stylesheet">
-	<script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
-	<script type="text/javascript" src="assets/js/main.js"></script>
-	<script id="class-template" type="text/x-handlebars-template">
-	  <li id='{{properties.id}}' class="class-entry">
-	    <h1>{{properties.name}}</h1>
-	    <p>{{properties.address}}</p>
-	    <p>{{properties.address2}}</p>
-	    <p>{{properties.city}}, {{properties.state}}  {{properties.zip}}</p>
-	    <p>{{properties.time}}</p>
-	    <p>{{properties.contact}}</p>
-	    <p>{{properties.email}}</p>
-	    <p>{{properties.phone}}</p>
-	    <p>Open Enrollment: {{properties.open_enrollment}}</p>
-	    <p>Childcare Available: {{properties.childcare}}</p>
-	    <p>Skill Level: {{properties.skill_level}}</p>
-	  </li>
-	</script>
-	<script type="text/javascript">
-	  window.onload = loadScript;
-	</script>
+    <meta charset="UTF-8">
+    <title>ESL Courses in Dayton, Ohio</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="assets/js/grids.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script id="class-template" type="text/x-handlebars-template">
+      <li id="{{properties.id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
+        <h1>{{properties.name}}</h1>
+        <p>{{properties.address}}</p>
+        <p>{{properties.address2}}</p>
+        <p>{{properties.city}}, {{properties.state}}  {{properties.zip}}</p>
+        <p>{{properties.time}}</p>
+        <p>{{properties.contact}}</p>
+        <p>{{properties.email}}</p>
+        <p>{{properties.phone}}</p>
+        <p>Open Enrollment: {{properties.open_enrollment}}</p>
+        <p>Childcare Available: {{properties.childcare}}</p>
+        <p>Skill Level: {{properties.skill_level}}</p>
+      </li>
+    </script>
+    <script type="text/javascript">
+      window.onload = loadScript;
+    </script>
 </head>
 <body>
-	<div id="map-canvas"></div>
-	<div id="list-container">
-		<ul id="class-list">
-		</ul>
-	</div>
-	<div id="filter-container">
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-		<div id="walkin-filter">
-			<input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?<br />
-			<input id="chk-monday" type="checkbox" value="monday">Monday<br />
-			<input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday<br />
-			<input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday<br />
-			<input id="chk-thursday" type="checkbox" value="thursday">Thursday<br />
-			<input id="chk-friday" type="checkbox" value="friday">Friday<br />
-			<input id="chk-morning" type="checkbox" value="morning">Morning<br />
-			<input id="chk-evening" type="checkbox" value="evening">Evening<br />
-			<input id="chk-childcare" type="checkbox" value="childcare">Childcare Available<br />
-			<input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic<br />
-			<input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate<br />
-			<input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced<br />
+    <div id="map-canvas"></div>
+    <div class="container-fluid">
+	    <div class="row">
+            <div role="navigation" class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="nav navbar-nav">
+                    <li class="col-xs-12 col-sm-5 col-md-5 col-lg-5"><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></li>
+                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#map-canvas">Map</a></li>
+                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#filter-container">Filter</a></li>
+                    <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#about">About</a></li>
+                    <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#list-container">Classes</a></li>
+				</ul>
+		    </div>
+            <div id="filter-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <div id="walkin-filter row">
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
+                </div>
+            </div>
+            <div id="list-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
+                <ul id="class-list" class="row"></ul>
+            </div>
+		    <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		        <h1>About</h1>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a ultricies orci. Nullam vitae est ac orci iaculis ornare. Pellentesque pretium posuere mauris, nec lobortis tellus. Quisque porta neque libero, molestie convallis leo tempus id. Aliquam egestas, massa vel pellentesque tempus, diam leo pretium justo, nec blandit risus elit vulputate lorem. Praesent vel odio aliquam, ultrices diam eu, faucibus metus. Sed adipiscing arcu ac nisi porta, nec adipiscing risus tempor. Sed sit amet eros odio. Curabitur a tellus eu neque tempor congue. Duis eu nisl magna. Aliquam et turpis et nibh convallis ornare quis sed augue. Aenean et ipsum fringilla, adipiscing felis elementum, pellentesque lorem. Nulla eleifend, tellus eu venenatis tincidunt, velit urna tempor urna, et commodo purus ipsum id nunc. Cras eget placerat mi, nec lacinia quam. Integer vel imperdiet urna.
+		        </p>
+		    </div>
 		</div>
-	</div>
-	<div id="feedback-container">
-	<div id='wfsf-widget' class='wfsf-widget-bottom-right'></div>
-	<!-- Snippet of code here is for the widget pulled from sitefeedback.com. A custom install should replace this chunk (or at least the _pubid with) their own value. SiteFeedback.com is a free solution for receiving and storing feedback without a server backend. -->
-<script type='text/javascript'>var wfsf_config={'cta':'Was this helpful?','yes_btn':'YES','no_btn':'NO','yes_cta':'What else can we do to make it even better?','no_cta':'Why do you think so?','thanks':'Thank you for your feedback!', 'cta_txt_color':'#000000','tab_bg_color':'#ffffff','position':'bottom-right'};</script>
-<script src="http://www.sitefeedback.com/wth-latest2.js" type="text/javascript" _pubid="557" id="wfwhtsf"></script></div>
+    </div>
 </body>
 </html>
