@@ -1,0 +1,577 @@
+/*! normalize.css 2011-11-04T15:38 UTC - http://github.com/necolas/normalize.css */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+    display: block
+}
+audio, canvas, video {
+    display: inline-block;*display:inline;*zoom:1
+}
+audio:not([controls]) {
+    display: none
+}
+[hidden] {
+    display: none
+}
+html {
+    font-size: 100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%
+}
+body {
+    margin: 0
+}
+body, button, input, select, textarea {
+    font-family: sans-serif
+}
+a:focus {
+    outline: thin dotted
+}
+a:hover, a:active {
+    outline: 0
+}
+h1 {
+    font-size: 2em
+}
+abbr[title] {
+    border-bottom: 1px dotted
+}
+b, strong {
+    font-weight: bold
+}
+blockquote {
+    margin: 1em 40px
+}
+dfn {
+    font-style: italic
+}
+mark {
+    background: #ff0;color:#000
+}
+pre, code, kbd, samp {
+    font-family: monospace,serif;_font-family:'courier new',monospace;font-size:1em
+}
+pre {
+    white-space: pre;white-space:pre-wrap;word-wrap:break-word
+}
+q {
+    quotes: none
+}
+q:before, q:after {
+    content: '';content:none
+}
+small {
+    font-size: 75%
+}
+sub, sup {
+    font-size: 75%;line-height:0;position:relative;vertical-align:baseline
+}
+sup {
+    top: -0.5em
+}
+sub {
+    bottom: -0.25em
+}
+ul, ol {
+    margin-left: 0;padding:0 0 0 40px
+}
+dd {
+    margin: 0 0 0 40px
+}
+nav ul, nav ol {
+    list-style: none;list-style-image:none
+}
+img {
+    border: 0;-ms-interpolation-mode:bicubic
+}
+svg:not(:root) {
+    overflow: hidden
+}
+figure {
+    margin: 0
+}
+form {
+    margin: 0
+}
+fieldset {
+    border: 1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em
+}
+legend {
+    border: 0;*margin-left:-7px
+}
+button, input, select, textarea {
+    font-size: 100%;margin:0;vertical-align:baseline;*vertical-align:middle
+}
+button, input {
+    line-height: normal
+}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;-webkit-appearance:button;*overflow:visible
+}
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;padding:0
+}
+input[type="search"] {
+    -webkit-appearance: textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box
+}
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;padding:0
+}
+textarea {
+    overflow: auto;vertical-align:top
+}
+table {
+    border-collapse: collapse;border-spacing:0
+}
+.left, .alignleft {
+    float: left
+}
+.right, .alignright {
+    float: right
+}
+.clear {
+    clear: both
+}
+.container {
+    position: relative;width:960px;margin:0 auto
+}
+.container .content {
+    margin: 0 16px;padding:10px 0;min-height:700px
+}
+body {
+    font-family: freight-sans-pro,sans-serif
+}
+body.category-stories .content {
+    margin: -10px 0
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: adelle
+}
+.home header {
+    height: 593px
+}
+.home .header-image {
+    height: 513px
+}
+.home .header-image .mask {
+    position: absolute;float:none;top:0;height:100%;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/mask.png) center repeat;z-index:50
+}
+.home .header-image .mask.left {
+    left: 0
+}
+.home .header-image .mask.right {
+    right: 0
+}
+.home .container .content {
+    background: 0
+}
+#main {
+    overflow: hidden
+}
+header {
+    position: relative;height:475px;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-header.png) bottom repeat-x
+}
+header .content-shadow {
+    height: 191px;margin-top:0;margin-bottom:-191px;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/content-shadows.png) top center no-repeat
+}
+header .top-bar {
+    position: absolute;top:0;width:100%;height:25px;z-index:20;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-top-bar.png);border-bottom:1px solid #ddd;-webkit-box-shadow:0 0 4px 0 #222;-moz-box-shadow:0 0 4px 0 #222;box-shadow:0 0 4px 0 #222;color:#111
+}
+header .container .logo {
+    position: absolute;z-index:25;top:8px;left:-25px
+}
+
+/* Navigation
+
+nav .menu-top-container {
+    float: right
+}
+nav .menu-top-container ul {
+    margin: 0 25px 0 0;padding:0;list-style:none
+}
+nav .menu-top-container ul li {
+    float: left;padding:0 6px
+} 
+nav .menu-top-container ul li a {
+    color: #fff;font-size:12px
+}
+nav .menu-top-container ul li a:hover {
+    color: #fff
+}
+nav .menu-home-container {
+    position: absolute;top:175px;left:20px;z-index:10
+}
+nav .menu-home-container ul {
+    margin: 0;padding:0;list-style:none
+}
+nav .menu-home-container ul li {
+    padding: 4px 0
+}
+nav .menu-home-container ul li .navbar-brand,
+nav .menu-home-container ul li .navbar-link {
+    color: #fff;
+	font-family:'Bitter', serif;
+	font-size:38px;
+	font-weight:700;
+	text-decoration:none;
+	text-transform:lowercase
+}
+nav .menu-home-container ul li .navbar-brand:hover,
+nav .menu-home-container ul li .navbar-link:hover {
+    text-shadow: 0 0 4px #000;
+}
+*/
+#page-top {
+	background-color: rgba(100,144,183,0.85);
+	border: hidden;
+	height:50px;
+}
+nav .menu-main-container ul li {
+	margin:2px 0 0;
+	font-family:'Bitter', serif;
+	font-size:24px;
+	font-weight:400
+}
+nav .menu-main-container ul li .navbar-brand {
+	margin:2px 0 0;
+	font-family:'Bitter', serif;
+	font-size:30px;
+	font-weight:700;
+	padding:10px 15px;
+	color:#fff;
+	text-decoration:none;
+}
+nav .menu-main-container ul li .navbar-link {
+	padding:10px 15px;
+	color:#fff;
+	text-decoration:none;
+	text-transform:lowercase
+}
+nav .menu-main-container ul li .navbar-brand:hover,
+nav .menu-main-container ul li .navbar-link:hover {
+	color:#fff;
+    text-shadow: 0 0 4px #000;
+}
+
+/* Header */
+
+header .header-image {
+    position: relative;overflow:hidden;height:395px;text-align:center;z-index:1
+}
+header .header-image .gradient {
+    overflow: hidden;position:absolute;width:100%;height:400px;z-index:2;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/header-gradient-4.png) center repeat-y
+}
+header .header-image #wrapper {
+    overflow: hidden;z-index:40
+}
+header .header-image #wrapper #carousel {
+    height: 593px
+}
+header .header-image #wrapper #carousel img {
+    display: block;float:left;border:0
+}
+header .header-image #wrapper .link {
+    display: block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:99
+}
+header .header-image #wrapper span {
+    display: none;position:absolute;bottom:0;right:47%;width:268px;height:360px;padding:13px;color:#fff;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:rgba(223,77,48,0.6);text-align:left
+}
+header .header-image #wrapper span.selected {
+    display: block
+}
+header .header-image #wrapper span .excerpt-content {
+    position: relative;height:360px
+}
+header .header-image #wrapper span .excerpt-content a {
+    color: #fff
+}
+header .header-image #wrapper span .excerpt-content a.readmore {
+    display: block;padding:0 25px 0 0;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/arrow-readmore.png) no-repeat right;text-align:right;text-decoration:none;text-transform:uppercase
+}
+header .header-image #wrapper span .excerpt-content .link {
+    display: block;position:absolute;top:0;left:0;width:100%;height:100%;z-index:99
+}
+header .header-image #wrapper span h1 {
+    margin: 0 0 15px;color:#fff;font-family:freight-sans-pro,sans-serif;font-size:52px;font-weight:100;line-height:40px
+}
+header .bar {
+    position: relative;height:92px;margin:-12px 0 0;z-index:1;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-menu.png) repeat-x;color:#fff
+}
+header .bar #wrapper {
+    position: relative;float:left;width:100%;height:72px;padding:4px 0
+}
+header .bar #wrapper #thumbs {
+    display: block;position:relative;float:left;left:50%;text-align:center
+}
+header .bar #wrapper #thumbs img {
+    width: 75px; float:left;position:relative;right:50%;border-left:5px solid #000;border-right:5px solid #000
+}
+header .bar #wrapper #thumbs img.selected {
+    margin: -5px 0;padding:0;border:5px solid #de9d00
+}
+header .bar #wrapper #prev {
+    position: absolute;left:-5px;height:72px;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/arrow-left.png) center right no-repeat
+}
+header .bar #wrapper #next {
+    position: absolute;right:-5px;width:20px;height:72px;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/arrow-right.png) center left no-repeat
+}
+header .bar .pad {
+    padding: 20px 20px 20px 35px
+}
+header .bar .pad h1 {
+    float: left;margin:5px 15px 0 0;font-family:'Bitter', serif;text-transform:lowercase
+}
+header .bar .pad li {
+    float: left;margin:5px 0 0;padding:0 10px;border-right:1px solid #777;font-family:'Bitter', serif;font-weight:100;list-style:none
+}
+header .bar .pad li:last-child {
+    border-right: 0; display: none;
+}
+header .bar .pad li.current_page_item a, header .bar .pad li.current-cat a {
+    color: #eab127
+}
+header .bar .pad li a {
+    color: #777;font-size:26px;text-decoration:none
+}
+header .bar .pad li a:hover {
+    color: #fff
+}
+.right .widgets {
+    width: 280px;margin:0 20px 0
+}
+.widgets {
+    position: relative;float:left;text-align:center
+}
+.widgets .widget {
+    float: left;position:relative;width:248px;margin:0 0 15px 0;padding:10px;text-align:left;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background:rgba(247,232,192,0.8)
+}
+.widgets .widget .readmore {
+    position: absolute;bottom:7px;right:7px;height:20px;padding:0 25px 0 0;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/arrow-readmore-red.png) no-repeat center right;color:#000;font-size:12px;text-decoration:none;text-transform:uppercase
+}
+.widgets .widget h3 {
+    width: 290px;height:38px;margin:0 -20px;padding:2px 6px;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-widget-header.png) no-repeat;color:#ffba12;font-size:26px;font-weight:700
+}
+.widgets .widget h3.ai1ec-date-title {
+    width: 3.5em;float:left;margin:0 .5em .5em!important;font:1em/1.1em Tahoma,Geneva,sans-serif!important;color:#444;text-shadow:0 1px 0 #fff;-o-text-shadow:0 1px 0 #fff;-ms-text-shadow:0 1px 0 #fff;-moz-text-shadow:0 1px 0 #fff;-webkit-text-shadow:0 1px 0 #fff;line-height:1.1em;text-align:center;border:2px solid #7e9dbd;border-radius:0 0 5px 5px;-o-border-radius:0 0 .5em .5em;-moz-border-radius:0 0 .5em .5em;-webkit-border-radius:0 0 .5em .5em;box-shadow:0 2px 2px rgba(0,0,0,0.08);-o-box-shadow:0 2px 2px rgba(0,0,0,0.08);-ms-box-shadow:0 2px 2px rgba(0,0,0,0.08);-moz-box-shadow:0 2px 2px rgba(0,0,0,0.08);-webkit-box-shadow:0 2px 2px rgba(0,0,0,0.08);background:#fff;background:-o-linear-gradient(#fff 1em,#eee);background:-ms-linear-gradient(#fff 1em,#eee);background:-moz-linear-gradient(#fff 1em,#eee);background:-webkit-gradient(linear,0% 1em,0% 100%,from(#fff),to(#eee));background:-webkit-linear-gradient(#fff 1em,#eee)
+}
+.widgets .widget h3 a {
+    color: #ffba12
+}
+.widgets .widget p {
+    margin: 0 0 10px
+}
+.widgets .widget ul {
+    list-style: none;margin:0 0 10px;padding:0 10px
+}
+.widgets .widget ul li {
+    padding: 0 0 10px
+}
+.widgets .widget .ai1ec-agenda-widget-view .ai1ec-date {
+    overflow: visible;height:54px;margin:0 0 10px!important;background:0
+}
+.widgets-row .widgets {
+    left: 50%;margin:0 -65px 0 -5px
+}
+.widgets-row .widgets .widget {
+    right: 50%;margin:0 15px
+}
+article {
+    min-height: 120px;padding:10px 50px 20px
+}
+article .date {
+    margin-top: -18px;color:#777
+}
+article a {
+    color: #a2002c
+}
+article h1, article h2, article h3, article h4, article h5, article h6 {
+    font-weight: 100
+}
+article img {
+    margin: 12px;padding:4px;box-shadow:0 0 7px #777;-moz-box-shadow:0 0 7px #777;-webkit-box-shadow:0 0 7px #777
+}
+article img.alignleft {
+    margin-right: 20px
+}
+article img.alignright {
+    margin-left: 20px
+}
+article form {
+    max-width: 550px
+}
+article.thin {
+    margin-right: 280px
+}
+article #gform_wrapper_2 .right_label input.medium, article #gform_wrapper_2 .right_label select.medium, article #gform_wrapper_2 .left_label input.medium, article #gform_wrapper_2 .left_label select.medium {
+    width: 55%
+}
+article .gform_wrapper .gform_footer.right_label, article .gform_wrapper .gform_footer.left_label {
+    padding: 2px 0 2px 33%
+}
+article .gform_wrapper input[type="text"], article .gform_wrapper input[type="url"], article .gform_wrapper input[type="email"], article .gform_wrapper input[type="tel"], article .gform_wrapper input[type="number"], article .gform_wrapper input[type="password"], article .gform_wrapper textarea {
+    padding: 4px;font-size:14px
+}
+article .gform_wrapper ul li.gfield {
+    clear: none
+}
+article .ai1ec-container {
+    clear: none
+}
+article #ai1ec-calendar-view-container {
+    clear: none
+}
+article table.ai1ec-month-view, article .ai1ec-week-view table {
+    clear: none
+}
+article .ai1ec-subscribe {
+    clear: none
+}
+article #wpbdmlistings {
+    padding: 14px 0 17px
+}
+article #wpbdmlistings .listingdetails {
+    margin: 0 15px
+}
+article #wpbdmlistings .listingthumbnail {
+    display: none
+}
+article #wpbdmlistings .listing-title {
+    font-size: 1.1em;font-weight:700
+}
+article .wpbdmodd, article .wpbdmeven {
+    border-bottom: 1px solid #7d7d7d
+}
+article .singledetailsview .list-meta {
+    margin-bottom: 33px
+}
+article .singledetailsview .field_5 {
+    margin: 2px 0
+}
+article .singledetailsview .field_5 label {
+    display: none!important
+}
+article .singledetailsview .field_5 a {
+    font-size: 24px
+}
+article .singledetailsview .field_8 {
+    margin: 2px 0 33px;font-size:24px
+}
+article .singledetailsview .field_8 label {
+    display: none!important
+}
+article .singledetailsview .field_2 {
+    display: none
+}
+article.story {
+    position: relative;margin:10px 0;-webkit-box-shadow:0 0 5px 0 #333;-moz-box-shadow:0 0 5px 0 #333;box-shadow:0 0 5px 0 #333;color:#fff;font-family:'Bitter', serif; background-position: 50% 50%;
+}
+article.story span {
+    position: absolute;display:block;top:0;left:0;width:100%;height:100%;z-index:2
+}
+article.story span.bg {
+    z-index: 0;background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-stories-list.png)
+}
+article.story h1 {
+    position: relative;z-index:1;font-size:36px;text-shadow:0 0 3px #111,0px 0 6px #222,0px 0 9px #333
+}
+article .newer-older .older {
+    float: left
+}
+article .newer-older .newer {
+    float: right
+}
+article .newer-older-stories div {
+    position: relative;width:43%;height:90px;padding:10px 20px;-webkit-box-shadow:0 0 3px 0 #333;-moz-box-shadow:0 0 3px 0 #333;box-shadow:0 0 3px 0 #333;font-size:24px;text-shadow:0 0 2px #111,0px 0 4px #222,0px 0 6px #333
+}
+article .newer-older-stories div a {
+    position: absolute;width:80%;top:50%;color:#fff;text-decoration:none
+}
+article .newer-older-stories div a:hover {
+    text-decoration: underline
+}
+article .newer-older-stories div.older {
+    float: left;text-align:left
+}
+article .newer-older-stories div.newer {
+    float: right;text-align:left
+}
+article .boxes {
+    margin: 0 -38px
+}
+article .boxes .orange-box {
+    float: left;width:388px;height:319px;margin:0 15px;padding:7px 14px;background:rgba(224,157,0,0.85);border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px
+}
+article .boxes .orange-box .post {
+    padding: 14px 0;border-top:1px solid #fff
+}
+article .boxes .orange-box .post h3 {
+    margin: 2px 0
+}
+article .boxes .orange-box .post p {
+    margin: 2px 0 4px
+}
+article .boxes .orange-box h2 {
+    margin: 7px 0;font-weight:700
+}
+article .boxes .orange-box.widget_FacebookLikeBox iframe {
+    background: #fff
+}
+article .boxes .orange-box.advanced_recent_posts_widget {
+    font-size: 16px;line-height:1.4em
+}
+article .boxes .orange-box.advanced_recent_posts_widget .post-title {
+    font-size: 18px
+}
+article .boxes .orange-box.advanced_recent_posts_widget ul li {
+    border-bottom: 0;border-top:1px solid #fff
+}
+article .boxes .column {
+    float: left;width:252px;min-height:200px;padding:0 21px;border-right:1px solid #333
+}
+article .boxes .column:last-child {
+    border-right: 0
+}
+.content-shadow {
+    background:url(http://www.welcomedayton.org/wp-content/themes/citday/images/content-shadows-bottom.png) 200px 30px no-repeat
+}
+footer {
+    position: relative;background:#830225;color:#fff
+}
+footer .container {
+    background: url(http://www.welcomedayton.org/wp-content/themes/citday/images/bg-footer-cap.png) top center no-repeat #a2002c
+}
+footer a {
+    color: #fff
+}
+footer .footer-content {
+    min-height: 100px;padding:35px
+}
+footer .footer-content p {
+    display: inline
+}
+footer .footer-content .top {
+    height: 150px
+}
+footer .footer-content nav a {
+    font-size: 14px;text-decoration:none
+}
+footer .footer-content nav a:hover {
+    text-decoration: underline
+}
+footer .footer-content nav ul {
+    margin: 0;padding:0;list-style:none
+}
+footer .footer-content nav ul li {
+    position: relative;float:left;padding:4px 34px 4px 0;height:1.5em;font-weight:700
+}
+footer .footer-content nav ul li ul li {
+    float: none;height:1.1em;padding:3px 2px;font-weight:400
+}
+footer .footer-content .bottom .left {
+    margin: 90px 0 0;font-size:10px
+}
+footer .footer-content .bottom .right img {
+    margin: 7px
+}
+.cat-item--4113473042 {
+    display: none
+}
