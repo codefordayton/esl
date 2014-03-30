@@ -1,122 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>ESOLDayton.com - English for Speakers of Other Languages in Dayton, Ohio</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width"/>
+    <title>Dayton ESOL - ESL Courses in Dayton, Ohio</title>
     
-    <!-- Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>
-
-    <!-- Custom styles for this prototype -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-  </head>
-  <body>
+	<link href="assets/css/citday.css" rel="stylesheet">
+    
+    <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
+    
+    <script type="text/javascript" src="assets/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.csv-0.71.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/grids.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
+    
+    <script id="class-template" type="text/x-handlebars-template">
+      <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
+        <h4 class="class-entry">{{name}}</h4>
+        <p><span class="class-entry">{{address}}</span><br>
+        <span class="class-entry">{{address2}}</span><br>
+        <span class="class-entry">{{city}}, {{state}}  {{zip}}</span></p>
+        
+		<p><span class="class-entry"><i>{{time}}</i></span><br>
+        <span class="class-entry"><i>{{contact}}</i></span><br>
+        <span class="class-entry"><i>{{email}}</i></span><br>
+        <span class="class-entry"><i>{{phone}}</i></span></p>
+		
+        <p><span class="class-entry"><i>Open Enrollment: {{open_enrollment}}</i></span><br>
+        <span class="class-entry"><i>Childcare Available: {{childcare}}</i></span><br>
+        <span class="class-entry"><i>Skill Level: {{skill_level}}</i></span></p>
+		<hr>
+      </li>
+    </script>
+    
+    <script type="text/javascript">
+      window.onload = loadScript;
+    </script>
+    
+</head>
+<body class="content-shadow">
 
-  <!-- Top Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav id="page-top" class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container menu-main-container">
+			<ul class="nav navbar-nav">
+				<li><a class="navbar-brand" href="#page-top">Dayton ESOL</a></li>
+			</ul>
+            <ul class="nav navbar-nav navbar-right">
+            	<li><a class="navbar-link" href="#map-canvas">Map</a></li>
+				<li><a class="navbar-link" href="#filter-header">Filter</a></li>
+				<li><a class="navbar-link" href="#about">About</a></li>
+				<li><a class="navbar-link" href="#list-container">Classes</a></li>
+            </ul>
+        </div>
+	</nav>
+    
+	<header>        
+    	<div class="container">
+			<div id="map-canvas"></div>
+			<div id="filter-header" class="bar">
+				<div class="pad">
+					<h1>Find ESOL Classes in Dayton, Ohio</h1>
+				</div>
+			</div>
+		</div>
+    </header>
+    
+	<div id="search-box"><input id="pac-input" class="controls" type="text" placeholder="Search Box"></div>
+    
     <div class="container">
-      <a class="navbar-brand" href="#map">Dayton ESOL</a>
-      <a class="navbar-link pull-right" style="margin:20px 10px;" href="#map">Map</a>
-      <a class="navbar-link pull-right" style="margin:20px 10px;" href="#find">Find</a>
-      <a class="navbar-link pull-right" style="margin:20px 10px;" href="#">About</a>
-    </div>
-  </nav>
-
-  <!-- Map -->
-  <a name="map"</a>
-  <div id="map-canvas"></div>
-
-  <!-- Find -->
-  <a name="find"></a>
-  <div class="container-fluid" style="background-color:black;height:48px;color:white;">
-    <div class="container">	
-      <div class="row">
-        <div class="col-md-8">
-          <h4>Find an ESOL Class in Dayton, Ohio</h4>     
+		<div id="walkin-filter" class="row">
+        	<div class="col-md-8">
+        		<div class="btn-group btn-group-lg" data-toggle="buttons">
+                	<label class="btn btn-default">
+						<input id="chk-monday" type="checkbox" value="monday">Monday
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-thursday" type="checkbox" value="thursday">Thursday
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-friday" type="checkbox" value="friday">Friday
+                    </label>
+            	</div>
+            </div>
+			<div class="col-md-4">
+            	<div class="btn-group btn-group-lg" data-toggle="buttons">
+                	<label class="btn btn-default">
+						<input id="chk-morning" type="radio" value="morning">Morning
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-evening" type="radio" value="evening">Evening
+                    </label>
+                </div>
+			</div>
         </div>
-        <div class="col-md-4">
-          <button style="margin:10px;" class="pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-search"></span></button>    
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Search Box -->
-  <div class="container" id="filter-container">
-  <div class="panel panel-default">
-    <div id="collapseThree" class="panel-collapse collapse">
-    <div class="panel-body">
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-	<div id="walkin-filter">
-	  <input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?<br />
-	  <input id="chk-monday" type="checkbox" value="monday">Monday<br />
-	  <input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday<br />
-	  <input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday<br />
-	  <input id="chk-thursday" type="checkbox" value="thursday">Thursday<br />
-	  <input id="chk-friday" type="checkbox" value="friday">Friday<br />
-	  <input id="chk-morning" type="checkbox" value="morning">Morning<br />
-	  <input id="chk-evening" type="checkbox" value="evening">Evening<br />
-	  <input id="chk-childcare" type="checkbox" value="childcare">Childcare Available<br />
-	  <input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic<br />
-	  <input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate<br />
-	  <input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced<br />
-    </div>
-    </div>
-    </div>
-  </div>
-  </div>
-
-  <!-- Search Results -->
-  <div class="container" id="list-container">
-	<ul id="class-list"></ul>
-  </div>
-
-  <!-- Footer -->  
-  <div class="container">
-  <div class="row">
-    <p class="navbar-text">Copyright (c) 2014 City of Dayton. Designed by CodeforDayton.org.</p>
-  </div>
-  </div>
-
-  <script type="text/javascript" src="assets/data/mapdata.js"></script>
-  <script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
-  <script type="text/javascript" src="assets/js/main.js"></script>
-  <script id="class-template" type="text/x-handlebars-template">
-	<li id='{{properties.id}}' class="class-entry">
-	  <h1>{{properties.name}}</h1>
-	  <p>{{properties.address}}</p>
-	  <p>{{properties.address2}}</p>
-	  <p>{{properties.city}}, {{properties.state}}  {{properties.zip}}</p>
-	  <p>{{properties.time}}</p>
-	  <p>{{properties.contact}}</p>
-	  <p>{{properties.email}}</p>
-	  <p>{{properties.phone}}</p>
-	  <p>Open Enrollment: {{properties.open_enrollment}}</p>
-	  <p>Childcare Available: {{properties.childcare}}</p>
-	  <p>Skill Level: {{properties.skill_level}}</p>
-    </li>
-  </script>
-  <script type="text/javascript">
-    window.onload = loadScript;
-  </script>
- 
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  
-  </body>
+		<div id="walkin-filter" class="row">
+			<div class="col-md-4" style="margin-top:10px; font-size:large;">
+				<input id="chk-walkin" type="checkbox" value="walkin">&nbsp;Only Walk-ins Welcome?
+			</div>
+			<div class="col-md-3" style="margin-top:10px; font-size:large;">
+				<input id="chk-childcare" type="checkbox" value="childcare">&nbsp;Childcare Available?
+			</div>
+			<div class="col-md-5">
+            	<div class="btn-group btn-group-lg" data-toggle="buttons">
+                	<label class="btn btn-default">
+						<input id="chk-level1" type="radio" value="level1">Basic
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-level2" type="radio" value="level2">Intermediate
+                    </label>
+                    <label class="btn btn-default">
+						<input id="chk-level3" type="radio" value="level3">Advanced
+                    </label>
+                </div>
+			</div>
+		</div>
+        <hr style="margin-left:30px;">
+	</div>
+           
+	<div id="list-container" class="container">
+		<article class="row">
+			<ul id="class-list"></ul>
+        </article>
+	</div>
+    
+</body>
 </html>
