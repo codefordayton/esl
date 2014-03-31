@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>Dayton ESOL - ESL Courses in Dayton, Ohio</title>
     
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/citday.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-	<link href="assets/css/citday.css" rel="stylesheet">
     
     <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
     
@@ -16,7 +16,7 @@
     <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/grids.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-	<script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
+    <script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
     
     <script id="class-template" type="text/x-handlebars-template">
       <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
@@ -61,6 +61,9 @@
 	<header>        
     	<div class="container">
 			<div id="map-canvas"></div>
+            <div id="search-box">
+				<input id="pac-input" type="text" class="form-control controls" style="margin-top:25px; width:40%;" type="text" placeholder="ESOL near Dayton, Ohio">	
+			</div>
 			<div id="filter-header" class="bar">
 				<div class="pad">
 					<h1>Find ESOL Classes in Dayton, Ohio</h1>
@@ -68,8 +71,6 @@
 			</div>
 		</div>
     </header>
-    
-	<div id="search-box"><input id="pac-input" class="controls" type="text" placeholder="Search Box"></div>
     
     <div class="container">
 		<div id="walkin-filter" class="row">
@@ -132,6 +133,15 @@
 			<ul id="class-list"></ul>
         </article>
 	</div>
+            
+		  <!--  <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		        <h2>About</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a ultricies orci. Nullam vitae est ac orci iaculis ornare. Pellentesque pretium posuere mauris, nec lobortis tellus. Quisque porta neque libero, molestie convallis leo tempus id. Aliquam egestas, massa vel pellentesque tempus, diam leo pretium justo, nec blandit risus elit vulputate lorem. Praesent vel odio aliquam, ultrices diam eu, faucibus metus. Sed adipiscing arcu ac nisi porta, nec adipiscing risus tempor. Sed sit amet eros odio. Curabitur a tellus eu neque tempor congue. Duis eu nisl magna. Aliquam et turpis et nibh convallis ornare quis sed augue. Aenean et ipsum fringilla, adipiscing felis elementum, pellentesque lorem. Nulla eleifend, tellus eu venenatis tincidunt, velit urna tempor urna, et commodo purus ipsum id nunc. Cras eget placerat mi, nec lacinia quam. Integer vel imperdiet urna.
+		        </p>
+		    </div>
+            
+		</div>
+    </div>-->
     
 </body>
 </html>
