@@ -1,3 +1,11 @@
+body,html {
+	margin-top: 25px;
+}
+
+i {
+	color:#666;
+}
+
 #map-canvas {
 	overflow:hidden;
 	position:absolute;
@@ -5,19 +13,23 @@
 	width: 100%;
 	z-index:1;
 }
+
+#search-box {
+	z-index:1000
+}
+
 #walkin-filter {
 	margin: 0 15px 20px 15px;
+	width: 930px;
 }
+
 #filter-header {
 	 margin-top:383px;
 	 width:960px;
 }
+
 .class-entry {
 	list-style-type: none;
-}
-
-.navbar {
-	background-color:white;
 }
 
 .hidden {
