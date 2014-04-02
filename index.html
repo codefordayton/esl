@@ -15,17 +15,81 @@
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script id="class-template" type="text/x-handlebars-template">
       <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
-        <h3 class="class-entry"><strong>{{name}}</strong></h3>
-        <p class="class-entry">{{address}}</p>
-        <p class="class-entry">{{address2}}</p>
-        <p class="class-entry">{{city}}, {{state}}  {{zip}}</p>
-        <p class="class-entry">{{time}}</p>
-        <p class="class-entry">{{contact}}</p>
-        <p class="class-entry">{{email}}</p>
-        <p class="class-entry">{{phone}}</p>
-        <p class="class-entry">Open Enrollment: {{open_enrollment}}</p>
-        <p class="class-entry">Childcare Available: {{childcare}}</p>
-        <p class="class-entry">Skill Level: {{skill_level}}</p>
+        <table>
+          <tr>
+            <h3 class="class-entry"><strong>{{name}}</strong></h3>
+          </tr>
+          <tr class="entry-row">
+            <p class="class-entry">
+              <td class="icon-spacer"><span class="glyphicon glyphicon-map-marker"></span></td>
+              <td><p>{{address}}</p></td>
+            </p>
+          </tr>
+          {{#if address2}}
+            <tr class="entry-row">
+              <p class="class-entry">
+                <td class="icon-spacer"></td>
+                <td><p>{{address2}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          <tr class="entry-row">
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>{{city}}, {{state}}  {{zip}}</p></td>
+            </p>
+          </tr>
+          {{#if time}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-time"></span></td>
+                <td><p>{{time}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if contact}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-user"></span></td>
+                <td><p>{{contact}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if email}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-envelope"></span></td>
+                <td><p><a href="mailto:{{email}}">{{email}}</a></p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if phone}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-earphone"></span></td>
+                <td><p><a href="tel:{{phone}}">{{phone}}</a></p></td>
+              </p>
+            </tr>
+          {{/if}}
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Open Enrollment: {{open_enrollment}}</p></td>
+            </p>
+          </tr>
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Childcare Available: {{childcare}}</p></td>
+            </p>
+          </tr>
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Skill Level: {{skill_level}}</p></td>
+            </p>
+          </tr>
+        </table>
       </li>
     </script>
     <script type="text/javascript">

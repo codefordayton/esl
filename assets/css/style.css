@@ -1,4 +1,4 @@
-body, html { 
+body, html {
 	height: 100%;
 	background-color: #2c3e50;
 }
@@ -18,15 +18,27 @@ body {
   }
 }
 
+/* table stuff */
+table {
+	border: none;
+}
+
+.icon-spacer {
+	float:left;
+	width: 2em;
+}
+
 .class-entry {
 	list-style-type: none;
 	font-size:80% !important;
 }
 
+
+
 ul{
-    list-style-type: none;
-	margin: 0; 
-	padding: 0; 
+  list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 .hidden {
