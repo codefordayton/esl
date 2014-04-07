@@ -2,146 +2,203 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width"/>
-    <title>Dayton ESOL - ESL Courses in Dayton, Ohio</title>
-    
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/citday.css" rel="stylesheet">
+	  <meta name="viewport" content="width=device-width"/>
+    <meta name="google-translate-customization" content="c70f6f0db4adc90c-dc195a29c9c63a96-g56fa40f8499b9b78-15"></meta>
+    <title>ESL Courses in Dayton, Ohio</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    
-    <link href='http://fonts.googleapis.com/css?family=Bitter:400,700,400italic' rel='stylesheet' type='text/css'>
-    
+    <script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
     <script type="text/javascript" src="assets/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="assets/js/jquery.csv-0.71.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="assets/js/grids.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-	<script type="text/javascript" src="assets/js/handlebars-v1.3.0.js"></script>
-    
     <script id="class-template" type="text/x-handlebars-template">
       <li id="{{id}}" class="class-entry col-xs-12 col-sm-12 col-md-12 col-lg-6 col-equal-height">
-        <h4 class="class-entry">{{name}}</h4>
-        <p><span class="class-entry">{{address}}</span><br>
-        <span class="class-entry">{{address2}}</span><br>
-        <span class="class-entry">{{city}}, {{state}}  {{zip}}</span></p>
-        
-		<p><span class="class-entry"><i>{{time}}</i></span><br>
-        <span class="class-entry"><i>{{contact}}</i></span><br>
-        <span class="class-entry"><i>{{email}}</i></span><br>
-        <span class="class-entry"><i>{{phone}}</i></span></p>
-		
-        <p><span class="class-entry"><i>Open Enrollment: {{open_enrollment}}</i></span><br>
-        <span class="class-entry"><i>Childcare Available: {{childcare}}</i></span><br>
-        <span class="class-entry"><i>Skill Level: {{skill_level}}</i></span></p>
-		<hr>
+        <table>
+          <tr>
+            <h3 class="class-entry"><strong>{{name}}</strong></h3>
+          </tr>
+          <tr class="entry-row">
+            <p class="class-entry">
+              <td class="icon-spacer"><span class="glyphicon glyphicon-map-marker"></span></td>
+              <td><p>{{address}}</p></td>
+            </p>
+          </tr>
+          {{#if address2}}
+            <tr class="entry-row">
+              <p class="class-entry">
+                <td class="icon-spacer"></td>
+                <td><p>{{address2}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          <tr class="entry-row">
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>{{city}}, {{state}}  {{zip}}</p></td>
+            </p>
+          </tr>
+          {{#if time}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-time"></span></td>
+                <td><p>{{time}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if contact}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-user"></span></td>
+                <td><p>{{contact}}</p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if email}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-envelope"></span></td>
+                <td><p><a href="mailto:{{email}}">{{email}}</a></p></td>
+              </p>
+            </tr>
+          {{/if}}
+          {{#if phone}}
+            <tr>
+              <p class="class-entry">
+                <td class="icon-spacer"><span class="glyphicon glyphicon-earphone"></span></td>
+                <td><p><a href="tel:{{phone}}">{{phone}}</a></p></td>
+              </p>
+            </tr>
+          {{/if}}
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Open Enrollment: {{open_enrollment}}</p></td>
+            </p>
+          </tr>
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Childcare Available: {{childcare}}</p></td>
+            </p>
+          </tr>
+          <tr>
+            <p class="class-entry">
+              <td class="icon-spacer"></td>
+              <td><p>Skill Level: {{skill_level}}</p></td>
+            </p>
+          </tr>
+        </table>
       </li>
     </script>
-    
     <script type="text/javascript">
       window.onload = loadScript;
     </script>
-    
 </head>
-<body class="content-shadow">
-
-	<nav id="page-top" class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="container menu-main-container">
-			<ul class="nav navbar-nav">
-				<li><a class="navbar-brand" href="#page-top">Dayton ESOL</a></li>
-			</ul>
-            <ul class="nav navbar-nav navbar-right">
-            	<li><a class="navbar-link" href="#map-canvas">Map</a></li>
-				<li><a class="navbar-link" href="#filter-header">Filter</a></li>
-				<li><a class="navbar-link" href="#about">About</a></li>
-				<li><a class="navbar-link" href="#list-container">Classes</a></li>
-            </ul>
-        </div>
-	</nav>
-    
-	<header>        
-    	<div class="container">
-			<div id="map-canvas"></div>
-            <div id="search-box">
-				<input id="pac-input" type="text" class="form-control controls" style="margin-top:25px; width:40%;" type="text" placeholder="ESOL near Dayton, Ohio">	
-			</div>
-			<div id="filter-header" class="bar">
-				<div class="pad">
-					<h1>Find ESOL Classes in Dayton, Ohio</h1>
-				</div>
-			</div>
-		</div>
-    </header>
-    
-    <div class="container">
-		<div id="walkin-filter" class="row">
-        	<div class="col-md-8">
-        		<div class="btn-group btn-group-lg" data-toggle="buttons">
-                	<label class="btn btn-default">
-						<input id="chk-monday" type="checkbox" value="monday">Monday
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-thursday" type="checkbox" value="thursday">Thursday
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-friday" type="checkbox" value="friday">Friday
-                    </label>
-            	</div>
+<body>
+    <div role="navigation" class="navbar navbar-default navbar-fixed-top">
+        <ul class="nav navbar-nav row">
+            <li class="col-xs-12 col-sm-5 col-md-5 col-lg-5"><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#map-canvas">Map</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#filter-container">Filter</a></li>
+            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#about">About</a></li>
+            <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#list-container">Classes</a></li>
+        </ul>
+	</div>
+	<div id="map-canvas"></div>
+	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div class="container-fluid">
+	    <div class="row">
+            <div id="filter-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
+                <div id="walkin-filter row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2>Filter</h2></div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
+                </div>
             </div>
-			<div class="col-md-4">
-            	<div class="btn-group btn-group-lg" data-toggle="buttons">
-                	<label class="btn btn-default">
-						<input id="chk-morning" type="radio" value="morning">Morning
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-evening" type="radio" value="evening">Evening
-                    </label>
-                </div>
-			</div>
+            <div id="list-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
+				<div class="row">
+					<h2>Classes<h2>
+					<ul id="class-list" class="row"></ul>
+				</div>
+      </div>
+      <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h2>About</h2>
+			  <p>Project READ is the primary ESOL [English for Speakers of Other Languages] referral source in Dayton. By calling the referral hotline, one can be referred to an ESOL class based on time preference, child care availability, location/bus route, and skill level. One doesn’t need to speak English in order to access the hotline- interpretation is available for free. The hotline also has free telephonic interpretation available to limited English proficient (LEP) callers.
+        <p><strong>To take advantage of this support service, contact the Project READ Helpline at <a href="tel:+19374617323">(937) 461-7323</a>.</strong></p>
+        <div class="row">
+          <div class="col-xs-4 col-sm-3 col-md-3">
+            <div class="btn-group">
+              <a href="#" class="btn btn-lg btn-success"
+                 data-uv-trigger
+                 data-uv-contact-title="Thank you for the feedback! How can we improve the site?">
+                   <span class="glyphicon glyphicon-thumbs-up icon-white"></span>
+              </a>
+              <a href="#" class="btn btn-lg btn-info"
+                 data-uv-trigger>
+                   <span class="glyphicon glyphicon-comment icon-white"></span>
+              </a>
+              <a href="#" class="btn btn-lg btn-danger"
+                 data-uv-trigger
+                 data-uv-contact-title="We're sorry. How can we improve?">
+                   <span class="glyphicon glyphicon-thumbs-down icon-white"></span>
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-3 col-xs-offset-5 col-sm-2 col-sm-offset-7 col-md-2 col-md-offset-7">
+            <div id="google_translate_element"></div>
+            <script type="text/javascript">
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+              }
+            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+          </div>
         </div>
-		<div id="walkin-filter" class="row">
-			<div class="col-md-4" style="margin-top:10px; font-size:large;">
-				<input id="chk-walkin" type="checkbox" value="walkin">&nbsp;Only Walk-ins Welcome?
-			</div>
-			<div class="col-md-3" style="margin-top:10px; font-size:large;">
-				<input id="chk-childcare" type="checkbox" value="childcare">&nbsp;Childcare Available?
-			</div>
-			<div class="col-md-5">
-            	<div class="btn-group btn-group-lg" data-toggle="buttons">
-                	<label class="btn btn-default">
-						<input id="chk-level1" type="radio" value="level1">Basic
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-level2" type="radio" value="level2">Intermediate
-                    </label>
-                    <label class="btn btn-default">
-						<input id="chk-level3" type="radio" value="level3">Advanced
-                    </label>
-                </div>
-			</div>
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-3 col-sm-1 col-sm-offset-4 col-md-1 col-md-offset-4">
+            <a href="//codefordayton.org">
+              <img class="img-responsive" src="assets/images/captain.png" alt="Designed with love by Code For Dayton">
+            </a>
+          </div>
+          <div class="col-xs-4 col-sm-3 col-md-3">
+            <p>Designed with love by <a href="//codefordayton.org">Code For Dayton</a>
+          </div>
+        </div>
+	    </div>
 		</div>
-        <hr style="margin-left:30px;">
-	</div>
-           
-	<div id="list-container" class="container">
-		<article class="row">
-			<ul id="class-list"></ul>
-        </article>
-	</div>
-            
-		  <!--  <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		        <h2>About</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a ultricies orci. Nullam vitae est ac orci iaculis ornare. Pellentesque pretium posuere mauris, nec lobortis tellus. Quisque porta neque libero, molestie convallis leo tempus id. Aliquam egestas, massa vel pellentesque tempus, diam leo pretium justo, nec blandit risus elit vulputate lorem. Praesent vel odio aliquam, ultrices diam eu, faucibus metus. Sed adipiscing arcu ac nisi porta, nec adipiscing risus tempor. Sed sit amet eros odio. Curabitur a tellus eu neque tempor congue. Duis eu nisl magna. Aliquam et turpis et nibh convallis ornare quis sed augue. Aenean et ipsum fringilla, adipiscing felis elementum, pellentesque lorem. Nulla eleifend, tellus eu venenatis tincidunt, velit urna tempor urna, et commodo purus ipsum id nunc. Cras eget placerat mi, nec lacinia quam. Integer vel imperdiet urna.
-		        </p>
-		    </div>
-            
-		</div>
-    </div>-->
-    
+    </div>
+    <script>
+      UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/tuzEucnb54k6dfIcYqdePA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
+
+      UserVoice.push(['set', {
+        accent_color: '#448dd6',
+        trigger_color: 'white',
+        trigger_background_color: 'rgba(46, 49, 51, 0.6)',
+        smartvote_enabled: false,
+        post_idea_enabled: false
+      }]);
+
+    </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49480678-1', 'codefordayton.org');
+  ga('send', 'pageview');
+
+    </script>
 </body>
 </html>
