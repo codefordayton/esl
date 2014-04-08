@@ -33,7 +33,9 @@ table {
 	font-size:80% !important;
 }
 
-
+#google_translate_element {
+	padding-top: 1em;
+}
 
 ul{
   list-style-type: none;
