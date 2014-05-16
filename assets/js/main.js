@@ -21,21 +21,21 @@ function setUserLocation(pos) {
   });
 }
 
-// called after the map is added, adds our data into the map and list 
+// called after the map is added, adds our data into the map and list
 function initialize() {
   // center on downtown Dayton
   var mapOptions = {
     center: new google.maps.LatLng(39.758948,-84.191607),
     zoom: 10
   };
-  
+
   // create the map element
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-  
+
   // load the handlebars template for the class list
   var source = document.getElementById('class-template').innerHTML;
   var template = Handlebars.compile(source);
-  
+
   // If browser supports geolocation, use it to put user location on map
   if (navigator.geolocation) {
     function success(position) {
@@ -43,7 +43,7 @@ function initialize() {
     }
     navigator.geolocation.getCurrentPosition(success, null);
   }
-  
+
   // Create the search box and link it to the UI element.
   var input = /** @type {HTMLInputElement} */(
       document.getElementById('pac-input'));
@@ -60,25 +60,24 @@ function initialize() {
     userLocation.setMap(null);
     setUserLocation(place.geometry.location);
   });
-            
-  // load the map data
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://docs.google.com/spreadsheet/pub?key=0ArVHHOqS9VmBdEI1Rk4tMEhxd2pNb1ByYXNQbUJjV0E&output=csv');
-  xhr.onload = function() {
-    mapData = $.csv.toObjects(this.responseText);
 
-    // put data into the map, store references to the markers and visibility in the JSON.
-    for (var i = 0; i < mapData.length; i++) {
-      var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(mapData[i].latitude, mapData[i].longitude),
-        map: map,
-        title: mapData[i].name
-      });
-      // store helpful properties
-      mapData[i].marker = marker;
-      mapData[i].shown = true;
-      mapData[i].id = 'class' + i;
-
+  Tabletop.init(
+  {
+    key: '0ArVHHOqS9VmBdEI1Rk4tMEhxd2pNb1ByYXNQbUJjV0E',
+    simpleSheet: true,
+    callback: function(mapData, tabletop) {
+      // put data into the map, store references to the markers and visibility in the JSON.
+      for (var i = 0; i < mapData.length; i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(mapData[i].latitude, mapData[i].longitude),
+          map: map,
+          title: mapData[i].name
+        });
+        // store helpful properties
+        mapData[i].marker = marker;
+        mapData[i].shown = true;
+        mapData[i].id = 'class' + i;
+      }
       // TODO: Possible to simplify?
       google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
         toggleWalkin(mapData, e);
@@ -111,29 +110,28 @@ function initialize() {
       google.maps.event.addDomListener(document.getElementById('chk-evening'), 'click', function(e) {
         toggleDateChange(mapData, e, 'pm');
       });
-        
+
       google.maps.event.addDomListener(document.getElementById('chk-childcare'), 'click', function(e) {
         toggleChildcare(mapData, e);
       });
-        
+
       google.maps.event.addDomListener(document.getElementById('chk-level1'), 'click', function(e) {
         toggleSkillLevel(mapData, e, '1');
       });
-        
+
       google.maps.event.addDomListener(document.getElementById('chk-level2'), 'click', function(e) {
         toggleSkillLevel(mapData, e, '2');
       });
-        
+
       google.maps.event.addDomListener(document.getElementById('chk-level3'), 'click', function(e) {
         toggleSkillLevel(mapData, e, '3');
       });
-	  
+
       $('#class-list').append(template(mapData[i]));
+      $('#class-list li').responsiveEqualHeightGrid();
+      $('#class-list li').each(function () {$(this).addClass('col-xs-12 col-sm-12 col-md-6 col-lg-6');});
     }
-  $('#class-list li').responsiveEqualHeightGrid();
-  $('#class-list li').each(function () {$(this).addClass('col-xs-12 col-sm-12 col-md-6 col-lg-6');});
-  };
-  xhr.send();
+  });
 }
 
 // toggleXXXXX functions apply the changed checkbox to the appropriate filterState variables
@@ -169,7 +167,7 @@ function applyFilters(mapData, filterState) {
     var state = checkWalkin(mapData[i], filterState) &&
                 checkChildcare(mapData[i], filterState) &&
                 checkDateTime(mapData[i], filterState) &&
-                checkSkillLevel(mapData[i], filterState)
+                checkSkillLevel(mapData[i], filterState);
 
     mapData[i].shown = state;
     mapData[i].marker.setVisible(state);
@@ -215,8 +213,8 @@ function checkDateTime(feature, filterState) {
 
   var dayState = false;
   var timeState = false;
-  
-  // if the filters are defined, but disabled, alter the flag for that set 
+
+  // if the filters are defined, but disabled, alter the flag for that set
   if ((filterState.datetime.m === false || filterState.datetime.m === undefined) &&
       (filterState.datetime.t === false || filterState.datetime.t === undefined) &&
       (filterState.datetime.w === false || filterState.datetime.w === undefined) &&
@@ -263,7 +261,7 @@ function checkSkillLevel(feature, filterState) {
   if ((filterState.skilllevel['1'] === false || filterState.skilllevel['1'] === undefined) &&
       (filterState.skilllevel['2'] === false || filterState.skilllevel['2'] === undefined) &&
       (filterState.skilllevel['3'] === false || filterState.skilllevel['3'] === undefined))
-    return true; 
+    return true;
 
   var data = feature.skill_level.toLowerCase();
 
@@ -291,7 +289,7 @@ function parseDateTime(feature) {
 
   if (feature.dateinfo !== undefined)
     return;
-  
+
   feature.dateinfo = [];
   feature.dateinfo.m = false;
   feature.dateinfo.t = false;
@@ -300,7 +298,7 @@ function parseDateTime(feature) {
   feature.dateinfo.f = false;
   feature.dateinfo.am = false;
   feature.dateinfo.pm = false;
-  
+
   // rudimentary parsing of day of week/time range info.
   // Will handle days (M W F)
   //             day ranges (M-F)
@@ -340,26 +338,26 @@ function parseDateTime(feature) {
         }
         else {
           feature.dateinfo.pm = true;
-        }   
+        }
       }
       // day range
       else {
         var startIndex = days.indexOf(parts[0]);
         var endIndex = days.indexOf(parts[1]);
-                
+
         for (; startIndex <= endIndex; startIndex++) {
           feature.dateinfo[days[startIndex]] = true;
         }
       }
-    } 
-  }   
+    }
+  }
 }
 
-// isNumber is a helper function to determine if a string is numeric data. Used for parsing 
+// isNumber is a helper function to determine if a string is numeric data. Used for parsing
 //   time strings
 function isNumber (o) {
     return ! isNaN (o-0) && o !== null && o.replace(/^\s\s*/, '') !== "" && o !== false;
-}        
+}
 
 // helper function to find the list item.
 function findPos(obj) {
