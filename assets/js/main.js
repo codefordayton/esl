@@ -77,6 +77,8 @@ function initialize() {
         mapData[i].marker = marker;
         mapData[i].shown = true;
         mapData[i].id = 'class' + i;
+
+        $('#class-list').append(template(mapData[i]));
       }
       // TODO: Possible to simplify?
       google.maps.event.addDomListener(document.getElementById('chk-walkin'), 'click', function(e) {
@@ -127,7 +129,6 @@ function initialize() {
         toggleSkillLevel(mapData, e, '3');
       });
 
-      $('#class-list').append(template(mapData[i]));
       $('#class-list li').responsiveEqualHeightGrid();
       $('#class-list li').each(function () {$(this).addClass('col-xs-12 col-sm-12 col-md-6 col-lg-6');});
     }
@@ -254,7 +255,7 @@ function checkSkillLevel(feature, filterState) {
     return true;
 
   // if we don't have skill level information, quick return
-  if (feature.skill_level.length === 0 || feature.skill_level === 'unknown')
+  if (feature.skilllevel.length === 0 || feature.skilllevel === 'unknown')
     return true;
 
   // if we don't have a skill level flag set, quick return
@@ -263,7 +264,7 @@ function checkSkillLevel(feature, filterState) {
       (filterState.skilllevel['3'] === false || filterState.skilllevel['3'] === undefined))
     return true;
 
-  var data = feature.skill_level.toLowerCase();
+  var data = feature.skilllevel.toLowerCase();
 
   // the fields are OR'd
   if (filterState.skilllevel['1'] === true && data.indexOf('begin') === -1)
