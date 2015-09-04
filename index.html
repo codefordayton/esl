@@ -97,89 +97,92 @@
     </script>
 </head>
 <body>
-    <div role="navigation" class="navbar navbar-default navbar-fixed-top">
-        <ul class="nav navbar-nav row">
-            <li class="col-xs-12 col-sm-5 col-md-5 col-lg-5"><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></li>
-            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#map-canvas">Map</a></li>
-            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#filter-container">Filter</a></li>
-            <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1"><a href="#list-container">Classes</a></li>
-            <li class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><a href="#about">About</a></li>
-        </ul>
-	</div>
-	<div id="map-canvas"></div>
-	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div role="navigation" class="navigation container-fluid">
+       <div class="col-lg-6">
+            <div><a href="#map-canvas">ESOL Courses in Dayton, Ohio</a></div>
+       </div>
+       <div class="nav-options col-lg-6 row">
+           <div class="col-xs-3"><a href="#map-canvas">Map</a></div>
+           <div class="col-xs-3"><a href="#filter-container">Filter</a></div>
+           <div class="col-xs-3"><a href="#list-container">Classes</a></div>
+           <div class="col-xs-3"><a href="#about">About</a></div>
+        </div>
+    </div>
+    <div id="map-canvas"></div>
+    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div class="container-fluid">
-	    <div class="row">
-            <div id="filter-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
-                <div id="walkin-filter row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><h2>Filter</h2></div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
+        <div class="row">
+            <div id="filter-container" class="col-xs-12 jumbotron">
+                <div id="walkin-filter" class="row">
+                    <div class="col-xs-12"><h2>Filter</h2></div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-monday" type="checkbox" value="monday">Monday</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-tuesday" type="checkbox" value="tuesday">Tuesday</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-wednesday" type="checkbox" value="wednesday">Wednesday</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-thursday" type="checkbox" value="thursday">Thursday</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-friday" type="checkbox" value="friday">Friday</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-morning" type="checkbox" value="morning">Morning</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-evening" type="checkbox" value="evening">Evening</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-walkin" type="checkbox" value="walkin">Only Walk-ins Welcome?</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-childcare" type="checkbox" value="childcare">Childcare Available</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-level1" type="checkbox" value="level1">Skill Level - Basic</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-level2" type="checkbox" value="level2">Skill Level - Intermediate</div>
+                    <div class="col-xs-6 col-sm-4 col-lg-2"><input id="chk-level3" type="checkbox" value="level3">Skill Level - Advanced</div>
                 </div>
             </div>
-            <div id="list-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 jumbotron">
-				<div class="row">
-					<h2>Classes<h2>
-					<ul id="class-list" class="row"></ul>
-				</div>
-      </div>
-      <div id="about" class="jumbotron col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <h2>About</h2>
-			  <p>Project READ is the primary ESOL [English for Speakers of Other Languages] referral source in Dayton. By calling the referral hotline, one can be referred to an ESOL class based on time preference, child care availability, location/bus route, and skill level. One doesn’t need to speak English in order to access the hotline- interpretation is available for free. The hotline also has free telephonic interpretation available to limited English proficient (LEP) callers.
-        <p><strong>To take advantage of this support service, contact the Project READ Helpline at <a href="tel:+19374617323">(937) 461-7323</a>.</strong></p>
-        <div class="row">
-          <div class="col-xs-12 col-sm-3 col-sm-offset-9 col-md-3 col-md-offset-9">
-            <div class="btn-group">
-              <a href="#" class="btn btn-lg btn-success"
-                 data-uv-trigger
-                 data-uv-contact-title="Thank you for the feedback! How can we improve the site?">
-                   <span class="glyphicon glyphicon-thumbs-up icon-white"></span>
-              </a>
-              <a href="#" class="btn btn-lg btn-info"
-                 data-uv-trigger>
-                   <span class="glyphicon glyphicon-comment icon-white"></span>
-              </a>
-              <a href="#" class="btn btn-lg btn-danger"
-                 data-uv-trigger
-                 data-uv-contact-title="We're sorry. How can we improve?">
-                   <span class="glyphicon glyphicon-thumbs-down icon-white"></span>
-              </a>
+            <div id="list-container" class="col-xs-12 jumbotron">
+                <div class="row">
+                   <h2>Classes<h2>
+                   <ul id="class-list" class="row"></ul>
+                </div>
             </div>
-          </div>
-          <br/>
-          <div class="col-xs-12 col-sm-3 col-sm-offset-9 col-md-3 col-md-offset-9">
-            <div id="google_translate_element"></div>
-            <script type="text/javascript">
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-              }
-            </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-          </div>
+            <div id="about" class="jumbotron col-xs-12">
+                <h2>About</h2>
+                <p>Project READ is the primary ESOL [English for Speakers of Other Languages] referral source in Dayton. By calling the referral hotline, one can be referred to an ESOL class based on time preference, child care availability, location/bus route, and skill level. One doesn’t need to speak English in order to access the hotline- interpretation is available for free. The hotline also has free telephonic interpretation available to limited English proficient (LEP) callers.
+                    <strong>To take advantage of this support service, contact the Project READ Helpline at <a href="tel:+19374617323">(937) 461-7323</a>.</strong>
+                </p>
+                <div class="row">
+                <div class="col-xs-12 col-sm-4 col-sm-offset-8">
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-lg btn-success"
+                          data-uv-trigger
+                          data-uv-contact-title="Thank you for the feedback! How can we improve the site?">
+                            <span class="glyphicon glyphicon-thumbs-up icon-white"></span>
+                        </a>
+                        <a href="#" class="btn btn-lg btn-info"
+                          data-uv-trigger>
+                            <span class="glyphicon glyphicon-comment icon-white"></span>
+                        </a>
+                        <a href="#" class="btn btn-lg btn-danger"
+                          data-uv-trigger
+                          data-uv-contact-title="We're sorry. How can we improve?">
+                            <span class="glyphicon glyphicon-thumbs-down icon-white"></span>
+                        </a>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-xs-12 col-sm-4 col-sm-offset-8">
+                    <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+                        }
+                        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-2 col-sm-1 col-sm-offset-3 col-md-1 col-md-offset-4">
+                        <a href="//codefordayton.org">
+                            <img class="img-responsive" src="assets/images/captain.png" alt="Designed with love by Code For Dayton">
+                        </a>
+                    </div>
+                    <div class="col-xs-10 col-sm-4 col-md-3">
+                    <h6>Designed with love by <a href="//codefordayton.org">Code For Dayton</h6>
+                </div>
+            </div>
         </div>
-        <br/>
-        <div class="row">
-          <div class="col-xs-2 col-sm-1 col-sm-offset-3 col-md-1 col-md-offset-4">
-            <a href="//codefordayton.org">
-              <img class="img-responsive" src="assets/images/captain.png" alt="Designed with love by Code For Dayton">
-            </a>
-          </div>
-          <div class="col-xs-10 col-sm-4 col-md-3">
-            <h6>Designed with love by <a href="//codefordayton.org">Code For Dayton</h6>
-          </div>
-        </div>
-	    </div>
-		</div>
     </div>
+</div>
     <script>
       UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/tuzEucnb54k6dfIcYqdePA.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();
 
