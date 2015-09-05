@@ -133,6 +133,8 @@ function initialize() {
       $('#class-list li').each(function () {$(this).addClass('col-xs-12 col-sm-12 col-md-6 col-lg-6');});
     }
   });
+  
+  $('#pac-input').show();
 }
 
 // toggleXXXXX functions apply the changed checkbox to the appropriate filterState variables
